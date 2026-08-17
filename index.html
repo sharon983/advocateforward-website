@@ -22,11 +22,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 3
 .nav-links a:hover,.nav-links a.active{color:var(--primary);font-weight:600}
 .nav-cta{font-size:13px;padding:7px 16px;border-radius:var(--radius-md);background:var(--primary);color:#fff;border:none;cursor:pointer}
 .page{display:none}.page.active{display:block}
-.btn-gold{padding:11px 24px;background:var(--gold-dec);color:#fff;border:none;border-radius:var(--radius-md);font-size:14px;font-weight:600;cursor:pointer}
-.btn-ghost{padding:11px 24px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4);border-radius:var(--radius-md);font-size:14px;cursor:pointer}
+.btn-gold{padding:11px 24px;background:var(--gold-dec);color:#fff;border:none;border-radius:var(--radius-md);font-size:14px;font-weight:600;cursor:pointer;text-align:center}
+.btn-ghost{padding:11px 24px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4);border-radius:var(--radius-md);font-size:14px;cursor:pointer;text-align:center}
 
 /* HOME */
-.hero{background:var(--primary-dark);padding:64px 32px 56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.hero{background:var(--primary-dark);padding:64px 32px 56px;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
 .hero-tag{display:inline-block;font-size:16px;font-weight:600;color:#F5D485;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;padding:4px 12px;border:1px solid rgba(245,212,133,0.3);border-radius:20px}
 .hero h1{font-size:34px;font-weight:500;color:#fff;line-height:1.25;margin-bottom:8px}
 .hero h1 em{font-style:normal;color:#F5D485;font-family:'Cormorant Garamond',serif;font-size:40px}
@@ -134,11 +134,38 @@ h2 em{font-style:normal;color:var(--primary);font-family:'Cormorant Garamond',se
 
 /* RESOURCES */
 .resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.resource-card{background:#fff;border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:20px}
-.resource-tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:var(--radius-md);background:var(--gold-light);color:#6B4A00;margin-bottom:10px;font-weight:500}
+.resource-card{background:#fff;border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:20px;display:flex;flex-direction:column}
+.resource-tag{align-self:flex-start;display:inline-block;font-size:11px;padding:3px 10px;border-radius:var(--radius-md);background:var(--gold-light);color:#6B4A00;margin-bottom:10px;font-weight:500}
 .resource-card h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:7px}
-.resource-card p{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px}
+.resource-card p{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px;flex:1}
 .resource-dl{font-size:12px;color:var(--primary);cursor:pointer;text-decoration:underline}
+.coming-soon{font-size:11px;color:var(--text3);font-style:italic;padding:5px 10px;background:var(--bg2);border-radius:var(--radius-md);display:inline-block;align-self:flex-start;margin-top:auto}
+.resource-link{font-size:12px;color:var(--primary);text-decoration:none;font-weight:500;display:inline-block;margin-top:auto}
+.resource-link:hover{text-decoration:underline}
+
+/* AGENCY CARDS */
+.agency-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.agency-card{background:#fff;border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:22px;display:flex;flex-direction:column;gap:10px}
+.agency-header{display:flex;align-items:flex-start;gap:14px}
+.agency-icon{width:40px;height:40px;border-radius:var(--radius-md);background:var(--primary-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.agency-icon svg{width:20px;height:20px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
+.agency-name{font-size:14px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:2px}
+.agency-type{font-size:11px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
+.agency-desc{font-size:13px;color:var(--text2);line-height:1.6}
+.agency-link{font-size:12px;color:var(--primary);text-decoration:none;font-weight:500;margin-top:auto}
+.agency-link:hover{text-decoration:underline}
+.disclaimer{font-size:12px;color:var(--text3);font-style:italic;margin-top:24px;padding:14px 18px;background:var(--bg);border:0.5px solid #C8CCDC;border-radius:var(--radius-md)}
+
+/* FEES */
+.fee-card{background-color:white;border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:40px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
+.fee-icon{width:56px;height:56px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center}
+.fee-icon svg{width:26px;height:26px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
+.fee-card h3{font-size:20px;font-weight:500;color:var(--text)}
+.fee-card h3 em{font-style:normal;color:var(--primary);font-family:'Cormorant Garamond',serif;font-size:26px}
+.fee-card>p{font-size:15px;color:var(--text2);line-height:1.75;max-width:480px}
+.fee-points{display:flex;flex-direction:column;gap:10px;width:100%;max-width:440px}
+.fee-point{display:flex;align-items:flex-start;gap:10px;text-align:left;font-size:13px;color:var(--text2);line-height:1.5}
+.fee-point::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-dec);flex-shrink:0;margin-top:5px}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:40px}
@@ -159,35 +186,78 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
 .footer-bottom{padding:16px 32px;border-top:0.5px solid #C8CCDC;background:#fff;display:flex;justify-content:space-between;align-items:center}
 .footer-bottom p{font-size:12px;color:var(--text2)}
 
-/* Resources extras */
-.resource-card{display:flex;flex-direction:column}
-.resource-tag{align-self:flex-start}
-.resource-card p{flex:1}
-.coming-soon{font-size:11px;color:var(--text3);font-style:italic;padding:5px 10px;background:var(--bg2);border-radius:var(--border-radius-md);display:inline-block;align-self:flex-start;margin-top:auto}
-.resource-link{font-size:12px;color:var(--primary);text-decoration:none;font-weight:500;display:inline-block;margin-top:auto}
-.resource-link:hover{text-decoration:underline}
-/* Agency cards */
-.agency-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.agency-card{background:#fff;border:0.5px solid #C8CCDC;border-radius:var(--border-radius-lg);padding:22px;display:flex;flex-direction:column;gap:10px}
-.agency-header{display:flex;align-items:flex-start;gap:14px}
-.agency-icon{width:40px;height:40px;border-radius:var(--border-radius-md);background:var(--primary-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.agency-icon svg{width:20px;height:20px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
-.agency-name{font-size:14px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:2px}
-.agency-type{font-size:11px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
-.agency-desc{font-size:13px;color:var(--text2);line-height:1.6}
-.agency-link{font-size:12px;color:var(--primary);text-decoration:none;font-weight:500;margin-top:auto}
-.agency-link:hover{text-decoration:underline}
-.disclaimer{font-size:12px;color:var(--text3);font-style:italic;margin-top:24px;padding:14px 18px;background:var(--bg);border:0.5px solid #C8CCDC;border-radius:var(--border-radius-md)}
+/* =========================================================
+   RESPONSIVE LAYOUT RULES (MOBILE & TABLET SINGLE-COLUMN)
+   ========================================================= */
+@media (max-width: 768px) {
+  .site { border-radius: 0; border: none; }
+  
+  /* Nav */
+  nav { flex-direction: column; gap: 16px; padding: 16px 20px; position: static; text-align: center; }
+  .nav-links { flex-wrap: wrap; justify-content: center; gap: 14px 18px; }
+  .nav-cta { width: 100%; max-width: 280px; padding: 9px 16px; }
 
-.fee-card{background-color:white;border:0.5px solid #C8CCDC;border-radius:var(--border-radius-lg);padding:40px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
-.fee-icon{width:56px;height:56px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center}
-.fee-icon svg{width:26px;height:26px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
-.fee-card h3{font-size:20px;font-weight:500;color:var(--text)}
-.fee-card h3 em{font-style:normal;color:var(--primary);font-family:'Cormorant Garamond',serif;font-size:26px}
-.fee-card>p{font-size:15px;color:var(--text2);line-height:1.75;max-width:480px}
-.fee-points{display:flex;flex-direction:column;gap:10px;width:100%;max-width:440px}
-.fee-point{display:flex;align-items:flex-start;gap:10px;text-align:left;font-size:13px;color:var(--text2);line-height:1.5}
-.fee-point::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-dec);flex-shrink:0;margin-top:5px}
+  /* Sections Spacing */
+  .hero, .about-hero, .section-white, .section-alt, .section-bg, .about-section, .about-section-alt, .about-cta, .cta-banner {
+    padding: 36px 20px !important;
+  }
+
+  /* Grid Layouts to Single Column */
+  .hero, 
+  .pain-grid, 
+  .forward-list, 
+  .service-grid, 
+  .service-items-2col,
+  .about-hero, 
+  .cred-grid, 
+  .personal-section, 
+  .resource-grid, 
+  .agency-grid, 
+  .contact-grid, 
+  .form-row, 
+  footer {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Buttons Full-Width on Mobile */
+  .hero-btns, .cta-banner-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn-gold, .btn-ghost {
+    width: 100%;
+  }
+
+  /* Process Steps Stacking */
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .process-steps::before {
+    display: none;
+  }
+
+  /* Typography Adjustments */
+  .hero h1 { font-size: 26px; }
+  .hero h1 em { font-size: 30px; }
+  .about-name { font-size: 24px; }
+  .about-h2, h2 { font-size: 22px; }
+  .about-h2 em, h2 em { font-size: 26px; }
+
+  /* Images / Photos */
+  .about-photo-wrap { max-width: 260px; margin: 0 auto; }
+  .personal-photo-wrap { max-width: 100%; }
+
+  /* Footer */
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 20px;
+  }
+  .footer-brand p { max-width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -210,7 +280,7 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
 
   <!-- HOME PAGE -->
   <div class="page active" id="page-home">
-    <div class="hero" style="grid-template-columns:1.4fr 1fr;gap:56px;padding:64px 48px 56px">
+    <div class="hero">
       <div>
         <span class="hero-tag">Nebraska Special Education Advocacy</span>
         <h1>You don't have to walk into your next meeting <em>alone.</em></h1>
@@ -220,7 +290,7 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
           <button class="btn-ghost" onclick="showPage('services')">See how we help</button>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:rgba(255,255,255,0.07);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.1)">
           <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5D485" stroke-width="2" stroke-linecap="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
@@ -280,7 +350,7 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
       <p class="section-label">What we do</p>
       <h2>How we help</h2>
       <p class="section-sub">Advocate Forward exists to make sure parents of children with special needs are never alone in the process.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div class="service-grid">
         <div class="service-card" style="background:var(--bg);border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:12px">
           <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
           <h3 style="font-size:16px;font-weight:500;color:var(--text)">Parent advocacy</h3>
@@ -318,19 +388,6 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
         <div class="step"><div class="step-num">4</div><h4>Advocate together</h4><p>We walk in beside you every step</p></div>
       </div>
     </div>
-<!-- TESTIMONIALS HIDDEN — uncomment when real testimonials are ready
-    <div class="section-alt">
-      <p class="section-label">What families say</p>
-      <h2>Real families. Real results.</h2>
-      <p class="section-sub">You shouldn't have to figure this out alone.</p>
-      <div class="testi-grid">
-        <div class="testi-card"><div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div><p class="testi-quote">For the first time in three years, I walked out of an IEP meeting feeling like my daughter's needs were actually heard.</p><div class="testi-author"><div class="testi-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div><p class="testi-name">Sarah M.</p><p class="testi-role">Parent of a child with autism · Omaha, NE</p></div></div></div>
-        <div class="testi-card"><div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div><p class="testi-quote">I didn't know what an IEE was, or that I had the right to request one. Within two weeks my son had a proper evaluation.</p><div class="testi-author"><div class="testi-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div><p class="testi-name">Marcus T.</p><p class="testi-role">Parent of a child with dyslexia · Lincoln, NE</p></div></div></div>
-        <div class="testi-card"><div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div><p class="testi-quote">I felt completely outnumbered at every meeting. Now I come in prepared, informed, and confident.</p><div class="testi-author"><div class="testi-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div><p class="testi-name">Jennifer R.</p><p class="testi-role">Parent of a child with ADHD · Grand Island, NE</p></div></div></div>
-      </div>
-      <p class="testi-note">* Placeholder testimonials. Replace with real client stories when available.</p>
-    </div>
--->
     <div class="cta-banner">
       <h2>Your child's education is too important<br>to <em>navigate alone.</em></h2>
       <div class="cta-banner-btns">
@@ -378,7 +435,7 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
     </div>
   </div>
 
-  <!-- ABOUT PAGE — Sharon's photo embedded here -->
+  <!-- ABOUT PAGE -->
   <div class="page" id="page-about">
     <div class="about-hero">
       <div class="about-photo-wrap">
@@ -501,7 +558,7 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
             <p style="font-size:13px;color:var(--gold-text);line-height:1.6">We strive to respond to all inquiries within two business days.</p>
           </div>
         </div>
-        <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
+        <form class="contact-form" id="contact-form">
           <div class="form-row">
             <div class="form-group"><label for="fname">First name</label><input id="fname" name="first_name" type="text" placeholder="Jane" required/></div>
             <div class="form-group"><label for="lname">Last name</label><input id="lname" name="last_name" type="text" placeholder="Smith" required/></div>
