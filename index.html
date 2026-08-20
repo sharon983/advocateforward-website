@@ -263,11 +263,7 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
 <body>
 <div class="site">
   <nav>
-    <svg width="155" height="58" viewBox="0 0 250 105" xmlns="http://www.w3.org/2000/svg">
-      <text x="6" y="52" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="46" fill="#4A5AA8">Advocate</text>
-      <polygon points="6,63 218,59 218,55 234,61 218,67 218,63" fill="#C8962A"/>
-      <text x="60" y="92" font-family="'DM Sans',sans-serif" font-weight="500" font-size="20" fill="#555870" letter-spacing="6">FORWARD</text>
-    </svg>
+    <img style="width:158px;height:auto" src="img/logo.png" alt="Advocate Forward Logo" />
     <ul class="nav-links">
       <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
       <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
@@ -505,12 +501,14 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
       <h2>Tools to help you advocate <em>Forward</em></h2>
       <p class="section-sub">Free guides and downloads to help Nebraska families understand their rights and navigate the special education process with confidence.</p>
       <div class="resource-grid">
+        <!--
         <div class="resource-card"><span class="resource-tag">Free guide</span><h3>Understanding your child's IEP</h3><p>A walkthrough in plain language of every section of an IEP and what to look for.</p><span class="coming-soon">Coming soon</span></div>
         <div class="resource-card"><span class="resource-tag">Checklist</span><h3>IEP meeting prep checklist</h3><p>Everything you need to prepare for an IEP meeting and the questions you should be asking.</p><span class="coming-soon">Coming soon</span></div>
         <div class="resource-card"><span class="resource-tag">Free guide</span><h3>Your rights under IDEA</h3><p>A guide written for families that explains IDEA and what it means for your child.</p><span class="coming-soon">Coming soon</span></div>
         <div class="resource-card"><span class="resource-tag">Template</span><h3>Written request letter templates</h3><p>Letters you can use to request evaluations, IEEs, and records from your school district.</p><span class="coming-soon">Coming soon</span></div>
         <div class="resource-card"><span class="resource-tag">Reference</span><h3>Nebraska complaint procedures</h3><p>A step by step guide to filing a state complaint or requesting mediation in Nebraska.</p><span class="coming-soon">Coming soon</span></div>
         <div class="resource-card"><span class="resource-tag">Glossary</span><h3>Special education terms decoded</h3><p>Plain definitions of FAPE, LRE, PWN, ESY so you are never confused in a meeting.</p><span class="coming-soon">Coming soon</span></div>
+        -->
         <div class="resource-card"><span class="resource-tag">Regulation</span><h3>Nebraska Special Education Regulations (Rule 51)</h3><p>Nebraska's governing regulations for special education programs, Title 92 Nebraska Administrative Code, Chapter 51. Effective May 2022.</p><a class="resource-link" href="http://www.education.ne.gov/wp-content/uploads/2017/10/Clean51_2022.pdf" target="_blank">Download PDF from NDE &#8599;</a></div>
         <div class="resource-card"><span class="resource-tag">Checklist</span><h3>Transition checklists</h3><p>Guides to help families prepare for each major transition, from early intervention to school age, elementary to secondary, and school to adult services.</p><a class="resource-link" href="https://www.education.ne.gov/wp-content/uploads/2021/09/Transition-Timeline-sped.pdf" target="_blank">Transition Timeline &#8599;</a><br style="margin-bottom:6px"><a class="resource-link" href="https://www.education.ne.gov/wp-content/uploads/2021/09/Transition-Focused-IEP-Agenda-sped.pdf" target="_blank">Transition Focused IEP Agenda &#8599;</a><br style="margin-bottom:6px"><a class="resource-link" href="https://www.education.ne.gov/wp-content/uploads/2021/09/Tip-Sheet-Transition-for-Parents-sped.pdf" target="_blank">Tip Sheet: Transition for Parents &#8599;</a></div>
         <div class="resource-card"><span class="resource-tag">Resource</span><h3>Person-centered planning</h3><p>Flexible tools that can be used by anyone to help you explore, problem-solve, make decisions, or plan for the future.</p><a class="resource-link" href="https://www.lifecoursetools.com/lifecourse-library/foundational-tools/person-centered/" target="_blank">LifeCourse Tools &#8599;</a></div>
@@ -634,13 +632,29 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
   </div>
 </div>
 <script>
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  document.getElementById('nav-'+id).classList.add('active');
-  window.scrollTo(0,0);
+function showPage(id, updateHash = true){
+  var page = document.getElementById('page-' + id);
+  if (!page) return;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  page.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  var navLink = document.getElementById('nav-' + id);
+  if (navLink) navLink.classList.add('active');
+  if (updateHash) {
+    location.hash = id;
+  }
+  window.scrollTo(0, 0);
 }
+
+function handleRoute(){
+  var hash = window.location.hash.replace('#', '');
+  if (hash && document.getElementById('page-' + hash)) {
+    showPage(hash, false);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', handleRoute);
+window.addEventListener('hashchange', handleRoute);
 </script>
 </body>
 </html>
