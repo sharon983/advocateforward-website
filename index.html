@@ -33,392 +33,1309 @@
 <link rel="apple-touch-icon" href="https://www.advocateforward.com/img/logo.png">
 <link rel="icon" type="image/png" href="https://www.advocateforward.com/img/logo.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,400&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F4F5F8;--bg2:#EAECF2;
-  --primary:#4A5AA8;--primary-dark:#333E7A;--primary-light:#DDE2F4;
-  --gold-dec:#986312;--gold-text:#7A5200;--gold-light:#F5EDD8;
-  --text:#1A1E2E;--text2:#4A5068;--text3:#555870;
-  --radius-lg:12px;--radius-md:8px;
+  --bg:#F6F8FC;
+  --bg2:#EEF1F7;
+  --card-bg:#FFFFFF;
+  --primary:#4A5AA8;
+  --primary-dark:#2b3566;
+  --primary-light:#E6EAF8;
+  --gold-dec:#986312;
+  --gold-text:#7A5200;
+  --gold-light:#FBF5E8;
+  --text:#151824;
+  --text2:#444B63;
+  --text3:#666C85;
+  --border:#D4D9E8;
+  --radius-lg:16px;
+  --radius-md:10px;
+  --shadow-sm:0 2px 8px rgba(26,30,46,0.04);
+  --shadow-md:0 8px 24px rgba(26,30,46,0.06);
 }
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text)}
-.site{max-width:900px;margin:0 auto;background:var(--bg);border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);overflow:hidden}
-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;border-bottom:0.5px solid #C8CCDC;background:#fff;position:sticky;top:0;z-index:10}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{font-size:13px;color:var(--text2);text-decoration:none;cursor:pointer}
-.nav-links a:hover,.nav-links a.active{color:var(--primary);font-weight:600}
-.nav-cta{font-size:13px;padding:7px 16px;border-radius:var(--radius-md);background:var(--primary);color:#fff;border:none;cursor:pointer}
-.page{display:none}.page.active{display:block}
-.btn-gold{padding:11px 24px;background:var(--gold-dec);color:#fff;border:none;border-radius:var(--radius-md);font-size:14px;font-weight:600;cursor:pointer;text-align:center}
-.btn-ghost{padding:11px 24px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4);border-radius:var(--radius-md);font-size:14px;cursor:pointer;text-align:center}
 
-/* HOME */
-.hero{background:var(--primary-dark);padding:64px 32px 56px;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
-.hero-tag{display:inline-block;font-size:16px;font-weight:600;color:#F5D485;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;padding:4px 12px;border:1px solid rgba(245,212,133,0.3);border-radius:20px}
-.hero h1{font-size:34px;font-weight:500;color:#fff;line-height:1.25;margin-bottom:8px}
-.hero h1 em{font-style:normal;color:#F5D485;font-family:'Cormorant Garamond',serif;font-size:40px}
-.hero-sub{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:28px}
+body{
+  font-family:'DM Sans', sans-serif;
+  background-color:var(--bg);
+  color:var(--text);
+  font-size:16px;
+  line-height:1.65;
+  min-height:100vh;
+}
+
+.site{
+  width:100%;
+}
+
+.container{
+  max-width:1240px;
+  margin:0 auto;
+  padding:0 36px;
+}
+
+/* NAVBAR */
+nav{
+  background:rgba(255,255,255,0.70);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:var(--shadow-sm);
+}
+.nav-wrap{
+  display:grid;
+  grid-template-columns:1.8fr 2fr;
+  align-items:center;
+  gap:64px;
+  padding:14px 36px;
+}
+.brand-container{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+.brand-img{
+  width:190px;
+  height:auto;
+  cursor:pointer;
+  display:block;
+}
+.nav-menu-container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.nav-links{
+  display:flex;
+  gap:28px;
+  list-style:none;
+}
+.nav-links a{
+  font-size:15px;
+  font-weight:500;
+  color:var(--text2);
+  text-decoration:none;
+  cursor:pointer;
+  transition:color .2s ease;
+  position:relative;
+  padding:4px 0;
+  display:inline-block;
+}
+.nav-links a:hover{
+  color:var(--primary);
+  text-shadow:0 0 0.4px var(--primary);
+}
+.nav-links a.active{
+  color:var(--primary);
+  text-shadow:0 0 0.4px var(--primary);
+}
+.nav-links a.active::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:2.5px;
+  background:var(--primary);
+  border-radius:2px;
+}
+.nav-cta{
+  font-size:15px;
+  font-weight:600;
+  padding:10px 22px;
+  border-radius:var(--radius-md);
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  transition:all .2s ease;
+  box-shadow:0 3px 10px rgba(74,90,168,0.25);
+  flex-shrink:0;
+}
+.nav-cta:hover{
+  background:var(--primary-dark);
+  transform:translateY(-1px);
+}
+
+/* ROUTED PAGES */
+.page{display:none}
+.page.active{display:block}
+
+/* BUTTONS */
+.btn-gold{
+  padding:14px 30px;
+  background:var(--gold-dec);
+  color:#fff;
+  border:none;
+  border-radius:var(--radius-md);
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  text-align:center;
+  transition:all .2s ease;
+  box-shadow:0 4px 14px rgba(152,99,18,0.24);
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+}
+.btn-gold:hover{
+  background:#7a4f0d;
+  transform:translateY(-1px);
+}
+.btn-ghost{
+  padding:14px 30px;
+  background:transparent;
+  color:#fff;
+  border:1.5px solid rgba(255,255,255,0.45);
+  border-radius:var(--radius-md);
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  text-align:center;
+  transition:all .2s ease;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+}
+.btn-ghost:hover{
+  background:rgba(255,255,255,0.1);
+  border-color:#fff;
+}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg, var(--primary-dark) 0%, #1e254b 100%);
+  padding:96px 0 88px;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:64px;
+  align-items:center;
+}
+.hero-tag{
+  display:inline-block;
+  font-size:15px;
+  font-weight:600;
+  color:#F5D485;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+  padding:6px 16px;
+  border:1px solid rgba(245,212,133,0.35);
+  border-radius:24px;
+  background:rgba(245,212,133,0.08);
+}
+.hero h1{
+  font-size:46px;
+  font-weight:600;
+  color:#fff;
+  line-height:1.2;
+  margin-bottom:18px;
+  letter-spacing:-0.02em;
+}
+.hero h1 em{
+  font-style:normal;
+  color:#F5D485;
+  font-family:'Cormorant Garamond',serif;
+  font-size:54px;
+  font-weight:600;
+}
+.hero-sub{
+  font-size:18px;
+  color:rgba(255,255,255,0.85);
+  line-height:1.8;
+  margin-bottom:34px;
+}
 .hero-sub strong{color:#fff;font-weight:600}
-.hero-btns{display:flex;gap:12px}
-.hero-photo{border-radius:var(--radius-lg);background:rgba(255,255,255,0.08);aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(255,255,255,0.12)}
-.hero-photo svg{width:56px;height:56px;fill:none;stroke:rgba(255,255,255,0.4);stroke-width:1.2;stroke-linecap:round}
-.hero-photo p{font-size:12px;color:rgba(255,255,255,0.35)}
-.trust-bar{padding:18px 32px;background:#fff;border-bottom:0.5px solid #C8CCDC;display:flex;align-items:center;justify-content:center}
-.trust-item{display:flex;align-items:center;gap:8px;padding:0 28px;border-right:0.5px solid #C8CCDC}
-.trust-item:last-child{border-right:none}
-.trust-item svg{width:15px;height:15px;fill:none;stroke:var(--gold-dec);stroke-width:2;stroke-linecap:round;flex-shrink:0}
-.trust-item span{font-size:12px;color:var(--text2)}
-.section-white{padding:56px 32px;background:#fff}
-.section-alt{padding:56px 32px;background:var(--bg2)}
-.section-bg{padding:56px 32px;background:var(--bg)}
-.section-label{font-size:16px;font-weight:600;color:var(--gold-text);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px}
-.section-label span{color:var(--primary)}
-h2{font-size:26px;font-weight:500;color:var(--text);margin-bottom:10px;line-height:1.3}
-h2 em{font-style:normal;color:var(--primary);font-family:'Cormorant Garamond',serif;font-size:32px}
-.section-sub{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:36px;max-width:580px}
-.pain-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.pain-card{background:var(--bg);border-radius:var(--radius-lg);padding:22px;border-left:3px solid var(--gold-dec)}
-.pain-card p.q{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;line-height:1.4}
-.pain-card p.a{font-size:13px;color:var(--text2);line-height:1.6}
-.forward-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.forward-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border-radius:var(--radius-lg);background:var(--bg);border:0.5px solid #C8CCDC}
-.forward-icon{width:36px;height:36px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.forward-icon svg{width:16px;height:16px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
-.forward-verb{font-size:15px;font-weight:600;color:var(--primary);margin-bottom:2px}
-.forward-desc{font-size:13px;color:var(--text2);line-height:1.5}
-.service-card-wide{background:var(--bg);border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:32px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
-.service-icon-lg{width:48px;height:48px;border-radius:var(--radius-md);background:var(--primary-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.service-icon-lg svg{width:24px;height:24px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
-.service-card-wide h3{font-size:18px;font-weight:500;color:var(--text);margin-bottom:8px}
-.service-card-wide p.desc{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:16px}
-.service-items-2col{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
-.service-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text2)}
-.service-item::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-dec);flex-shrink:0;margin-top:5px}
-.service-link{font-size:13px;color:var(--primary);cursor:pointer;font-weight:500;background:none;border:none;padding:0}
-.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.service-card{background:#fff;border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:24px}
-.service-icon{width:40px;height:40px;border-radius:var(--radius-md);background:var(--primary-light);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.service-icon svg{width:20px;height:20px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
-.service-card h3{font-size:15px;font-weight:500;color:var(--text);margin-bottom:8px}
-.service-card p{font-size:13px;color:var(--text2);line-height:1.6}
-.service-items-1col{display:flex;flex-direction:column;gap:5px;margin-top:10px}
-.service-items-1col .service-item{font-size:12px}
-.process-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
-.process-steps::before{content:"";position:absolute;top:20px;left:10%;right:10%;height:1px;background:#C8CCDC}
-.step{text-align:center;padding:0 8px}
-.step-num{width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;font-size:14px;font-weight:500;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;position:relative;z-index:1}
-.step h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:5px}
-.step p{font-size:12px;color:var(--text2);line-height:1.5}
-.testi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.testi-card{background:#fff;border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:12px}
-.testi-stars{display:flex;gap:3px}
-.testi-star{color:var(--gold-dec);font-size:14px}
-.testi-quote{font-size:13px;color:var(--text2);line-height:1.7;font-style:italic;flex:1}
-.testi-quote::before{content:'\201C';font-size:20px;color:var(--gold-dec);font-family:'Cormorant Garamond',serif;line-height:0;vertical-align:-6px;margin-right:2px}
-.testi-author{display:flex;align-items:center;gap:10px;padding-top:12px;border-top:0.5px solid #C8CCDC}
-.testi-avatar{width:36px;height:36px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.testi-avatar svg{width:18px;height:18px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
-.testi-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.2}
-.testi-role{font-size:11px;color:var(--text3)}
-.testi-note{font-size:10px;color:var(--text3);font-style:italic;margin-top:16px;text-align:center}
-.cta-banner{padding:56px 32px;background:var(--primary-dark);text-align:center}
-.cta-banner h2{font-size:28px;font-weight:500;color:#fff;margin-bottom:28px;line-height:1.3}
-.cta-banner h2 em{font-style:normal;color:#F5D485;font-family:'Cormorant Garamond',serif;font-size:34px}
-.cta-banner-btns{display:flex;gap:12px;justify-content:center}
+.hero-btns{display:flex;gap:16px}
+.hero-points{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.hero-point-card{
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+  padding:22px 24px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(8px);
+  border-radius:var(--radius-lg);
+  border:1px solid rgba(255,255,255,0.14);
+  box-shadow:var(--shadow-sm);
+}
+.hero-point-icon{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.hero-point-card h3{
+  font-size:16px;
+  font-weight:600;
+  color:#fff;
+  margin-bottom:4px;
+}
+.hero-point-card p{
+  font-size:14.5px;
+  color:rgba(255,255,255,0.78);
+  line-height:1.55;
+}
 
-/* ABOUT */
-.about-hero{background:var(--primary-dark);padding:56px 40px;display:grid;grid-template-columns:1fr 1.6fr;gap:48px;align-items:center}
-.about-photo-wrap{width:100%;aspect-ratio:3/4;border-radius:var(--radius-lg);overflow:hidden;border:2px solid rgba(255,255,255,0.15)}
-.about-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.about-name{font-size:28px;font-weight:600;color:#fff;font-family:'Cormorant Garamond',serif;line-height:1.2;margin-bottom:4px}
-.about-title{font-size:13px;font-weight:500;color:#F5D485;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:16px}
-.about-intro{font-size:15px;color:rgba(255,255,255,0.8);line-height:1.8;margin-bottom:20px}
-.about-intro strong{color:#fff}
-.about-tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:6px}
-.about-tag svg{width:13px;height:13px;fill:none;stroke:#F5D485;stroke-width:2;stroke-linecap:round;flex-shrink:0}
-.about-section{padding:52px 40px;background:#fff}
-.about-section-alt{padding:52px 40px;background:var(--bg2)}
-.about-label{font-size:16px;font-weight:600;color:var(--gold-text);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px}
-.about-h2{font-size:24px;font-weight:500;color:var(--text);margin-bottom:12px;line-height:1.35}
-.about-h2 em{font-style:italic;color:var(--primary);font-family:'Cormorant Garamond',serif;font-size:30px}
-.body-text{font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:16px}
-.body-text strong{color:var(--text);font-weight:600}
-.pull-quote{margin:28px 0;padding:20px 28px;border-left:4px solid var(--gold-dec);background:var(--gold-light);border-radius:0 var(--radius-lg) var(--radius-lg) 0}
-.pull-quote p{font-size:17px;color:var(--gold-text);line-height:1.65;font-family:'Cormorant Garamond',serif;font-style:italic}
-.cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cred-card{display:flex;align-items:flex-start;gap:12px;padding:16px;background:#fff;border:0.5px solid #C8CCDC;border-radius:var(--radius-lg)}
-.cred-icon{width:38px;height:38px;border-radius:var(--radius-md);background:var(--primary-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cred-icon svg{width:18px;height:18px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
-.cred-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;line-height:1.3}
-.cred-desc{font-size:12px;color:var(--text2);line-height:1.5}
-.personal-section{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.personal-photo-wrap{border-radius:var(--radius-lg);overflow:hidden;border:0.5px solid #C8CCDC;aspect-ratio:1/1}
-.personal-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.about-cta{background:var(--primary-dark);padding:48px 40px;text-align:center}
-.about-cta h2{font-size:24px;font-weight:500;color:#fff;margin-bottom:10px;line-height:1.4}
-.about-cta h2 em{font-style:normal;color:#F5D485;font-family:'Cormorant Garamond',serif;font-size:30px}
-.about-cta p{font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+/* SECTION UTILITIES */
+.section-white{padding:84px 0;background:#ffffff}
+.section-alt{padding:84px 0;background:var(--bg2)}
+.section-bg{padding:84px 0;background:var(--bg)}
+.section-label{
+  font-size:15px;
+  font-weight:700;
+  color:var(--gold-text);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.section-label span{color:var(--primary)}
+h2{
+  font-size:36px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:14px;
+  line-height:1.3;
+  letter-spacing:-0.015em;
+}
+h2 em{
+  font-style:italic;
+  color:var(--primary);
+  font-family:'Cormorant Garamond',serif;
+  font-size:44px;
+}
+.section-sub{
+  font-size:17.5px;
+  color:var(--text2);
+  line-height:1.75;
+  margin-bottom:44px;
+  /*max-width:760px;*/
+}
+
+/* PAIN GRID */
+.pain-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:24px}
+.pain-card{
+  background:#fff;
+  border-radius:var(--radius-lg);
+  padding:32px 28px;
+  border-left:4px solid var(--gold-dec);
+  border-top:1px solid var(--border);
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  box-shadow:var(--shadow-sm);
+}
+.pain-card p.q{
+  font-size:17px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:10px;
+  line-height:1.45;
+}
+.pain-card p.a{
+  font-size:15px;
+  color:var(--text2);
+  line-height:1.65;
+}
+
+/* FORWARD LIST */
+.forward-list{display:grid;grid-template-columns:repeat(2, 1fr);gap:20px}
+.forward-item{
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+  padding:24px;
+  border-radius:var(--radius-lg);
+  background:#fff;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow-sm);
+}
+.forward-icon{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--primary-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.forward-icon svg{
+  width:20px;
+  height:20px;
+  fill:none;
+  stroke:var(--primary);
+  stroke-width:2.2;
+  stroke-linecap:round;
+}
+.forward-verb{
+  font-size:17px;
+  font-weight:600;
+  color:var(--primary);
+  margin-bottom:4px;
+}
+.forward-desc{
+  font-size:15px;
+  color:var(--text2);
+  line-height:1.6;
+}
+
+/* SERVICE GRID */
+.service-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:28px}
+.service-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:36px;
+  display:flex;
+  flex-direction:column;
+  box-shadow:var(--shadow-sm);
+}
+.service-icon{
+  width:50px;
+  height:50px;
+  border-radius:var(--radius-md);
+  background:var(--primary-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+}
+.service-icon svg{
+  width:24px;
+  height:24px;
+  fill:none;
+  stroke:var(--primary);
+  stroke-width:2;
+  stroke-linecap:round;
+}
+.service-card h3{
+  font-size:20px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:12px;
+}
+.service-card p{
+  font-size:15.5px;
+  color:var(--text2);
+  line-height:1.65;
+  margin-bottom:16px;
+}
+.service-items-1col{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin:12px 0 24px;
+}
+.service-item{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:14.5px;
+  color:var(--text2);
+  line-height:1.5;
+}
+.service-item::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--gold-dec);
+  flex-shrink:0;
+  margin-top:7px;
+}
+.service-link{
+  font-size:15px;
+  color:var(--primary);
+  cursor:pointer;
+  font-weight:600;
+  background:none;
+  border:none;
+  padding:0;
+  text-align:left;
+  margin-top:auto;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.service-link:hover{text-decoration:underline}
+
+/* PROCESS STEPS */
+.process-steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  position:relative;
+  gap:24px;
+  margin-top:20px;
+}
+.process-steps::before{
+  content:"";
+  position:absolute;
+  top:28px;
+  left:12%;
+  right:12%;
+  height:2px;
+  background:var(--border);
+  z-index:0;
+}
+.step{
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+.step-num{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:var(--primary);
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 16px;
+  box-shadow:0 4px 12px rgba(74,90,168,0.3);
+}
+.step h4{
+  font-size:16px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:8px;
+}
+.step p{
+  font-size:14.5px;
+  color:var(--text2);
+  line-height:1.55;
+}
+
+/* CTA BANNER */
+.cta-banner{
+  padding:80px 0;
+  background:linear-gradient(135deg, var(--primary-dark) 0%, #1e254b 100%);
+  text-align:center;
+  color:#fff;
+}
+.cta-banner h2{
+  font-size:38px;
+  font-weight:600;
+  color:#fff;
+  margin-bottom:32px;
+  line-height:1.3;
+}
+.cta-banner h2 em{
+  font-style:normal;
+  color:#F5D485;
+  font-family:'Cormorant Garamond',serif;
+  font-size:46px;
+}
+.cta-banner-btns{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+}
+
+/* ABOUT PAGE */
+.about-hero{
+  background:linear-gradient(135deg, var(--primary-dark) 0%, #1e254b 100%);
+  padding:84px 0;
+  color:#fff;
+}
+.about-hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1.6fr;
+  gap:64px;
+  align-items:center;
+}
+.about-photo-wrap{
+  width:100%;
+  aspect-ratio:3/4;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  border:3px solid rgba(255,255,255,0.18);
+  box-shadow:var(--shadow-md);
+}
+.about-photo-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+.about-name{
+  font-size:38px;
+  font-weight:600;
+  color:#fff;
+  font-family:'Cormorant Garamond',serif;
+  line-height:1.2;
+  margin-bottom:6px;
+}
+.about-title{
+  font-size:15px;
+  font-weight:600;
+  color:#F5D485;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.about-intro{
+  font-size:17.5px;
+  color:rgba(255,255,255,0.85);
+  line-height:1.8;
+  margin-bottom:24px;
+}
+.about-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:14.5px;
+  color:rgba(255,255,255,0.75);
+  margin-bottom:8px;
+}
+.about-tag svg{
+  width:16px;
+  height:16px;
+  fill:none;
+  stroke:#F5D485;
+  stroke-width:2.2;
+  stroke-linecap:round;
+  flex-shrink:0;
+}
+.story-layout{
+  display:grid;
+  grid-template-columns:1.8fr 1.2fr;
+  gap:56px;
+  align-items:start;
+}
+.body-text{
+  font-size:16.5px;
+  color:var(--text2);
+  line-height:1.85;
+  margin-bottom:22px;
+}
+.pull-quote{
+  margin:28px 0;
+  padding:24px 32px;
+  border-left:5px solid var(--gold-dec);
+  background:var(--gold-light);
+  border-radius:0 var(--radius-lg) var(--radius-lg) 0;
+}
+.pull-quote p{
+  font-size:20px;
+  color:var(--gold-text);
+  line-height:1.65;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:600;
+}
+.cred-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px;
+}
+.cred-card{
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  padding:22px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);
+}
+.cred-icon{
+  width:44px;
+  height:44px;
+  border-radius:var(--radius-md);
+  background:var(--primary-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.cred-icon svg{
+  width:20px;
+  height:20px;
+  fill:none;
+  stroke:var(--primary);
+  stroke-width:2;
+  stroke-linecap:round;
+}
+.cred-title{
+  font-size:15.5px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:4px;
+}
+.cred-desc{
+  font-size:14px;
+  color:var(--text2);
+  line-height:1.55;
+}
+.personal-section{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:48px;
+  align-items:center;
+}
+.personal-photo-wrap{
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  border:1px solid var(--border);
+  aspect-ratio:1/1;
+  box-shadow:var(--shadow-md);
+}
+.personal-photo-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* FEES */
+.fee-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:54px 44px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:24px;
+  max-width:720px;
+  margin:0 auto;
+  box-shadow:var(--shadow-md);
+}
+.fee-icon{
+  width:68px;
+  height:68px;
+  border-radius:50%;
+  background:var(--primary-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.fee-icon svg{
+  width:32px;
+  height:32px;
+  fill:none;
+  stroke:var(--primary);
+  stroke-width:2;
+  stroke-linecap:round;
+}
+.fee-card h3{
+  font-size:26px;
+  font-weight:600;
+  color:var(--text);
+}
+.fee-card h3 em{
+  font-style:normal;
+  color:var(--primary);
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;
+}
+.fee-card>p{
+  font-size:16.5px;
+  color:var(--text2);
+  line-height:1.75;
+}
+.fee-points{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  width:100%;
+  max-width:520px;
+}
+.fee-point{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  text-align:left;
+  font-size:15px;
+  color:var(--text2);
+  line-height:1.55;
+}
+.fee-point::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--gold-dec);
+  flex-shrink:0;
+  margin-top:7px;
+}
 
 /* RESOURCES */
-.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.resource-card{background:#fff;border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:20px;display:flex;flex-direction:column}
-.resource-tag{align-self:flex-start;display:inline-block;font-size:11px;padding:3px 10px;border-radius:var(--radius-md);background:var(--gold-light);color:#6B4A00;margin-bottom:10px;font-weight:500}
-.resource-card h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:7px}
-.resource-card p{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px;flex:1}
-.resource-dl{font-size:12px;color:var(--primary);cursor:pointer;text-decoration:underline}
-.coming-soon{font-size:11px;color:var(--text3);font-style:italic;padding:5px 10px;background:var(--bg2);border-radius:var(--radius-md);display:inline-block;align-self:flex-start;margin-top:auto}
-.resource-link{font-size:12px;color:var(--primary);text-decoration:none;font-weight:500;display:inline-block;margin-top:auto}
+.resource-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.resource-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  box-shadow:var(--shadow-sm);
+}
+.resource-tag{
+  align-self:flex-start;
+  display:inline-block;
+  font-size:12px;
+  padding:4px 12px;
+  border-radius:var(--radius-md);
+  background:var(--gold-light);
+  color:#6B4A00;
+  margin-bottom:14px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+.resource-card h3{
+  font-size:17.5px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:10px;
+  line-height:1.35;
+}
+.resource-card p{
+  font-size:14.5px;
+  color:var(--text2);
+  line-height:1.65;
+  margin-bottom:16px;
+  flex:1;
+}
+.resource-link{
+  font-size:14px;
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+  display:inline-block;
+  margin-top:auto;
+}
 .resource-link:hover{text-decoration:underline}
 
 /* AGENCY CARDS */
-.agency-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.agency-card{background:#fff;border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:22px;display:flex;flex-direction:column;gap:10px}
-.agency-header{display:flex;align-items:flex-start;gap:14px}
-.agency-icon{width:40px;height:40px;border-radius:var(--radius-md);background:var(--primary-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.agency-icon svg{width:20px;height:20px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
-.agency-name{font-size:14px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:2px}
-.agency-type{font-size:11px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
-.agency-desc{font-size:13px;color:var(--text2);line-height:1.6}
-.agency-link{font-size:12px;color:var(--primary);text-decoration:none;font-weight:500;margin-top:auto}
+.agency-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:24px;
+}
+.agency-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  box-shadow:var(--shadow-sm);
+}
+.agency-header{display:flex;align-items:flex-start;gap:16px}
+.agency-icon{
+  width:46px;
+  height:46px;
+  border-radius:var(--radius-md);
+  background:var(--primary-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.agency-icon svg{
+  width:22px;
+  height:22px;
+  fill:none;
+  stroke:var(--primary);
+  stroke-width:2;
+  stroke-linecap:round;
+}
+.agency-name{
+  font-size:17px;
+  font-weight:600;
+  color:var(--text);
+  line-height:1.35;
+  margin-bottom:3px;
+}
+.agency-type{
+  font-size:12px;
+  color:var(--text3);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+}
+.agency-desc{
+  font-size:14.5px;
+  color:var(--text2);
+  line-height:1.65;
+}
+.agency-link{
+  font-size:14px;
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+  margin-top:auto;
+}
 .agency-link:hover{text-decoration:underline}
-.disclaimer{font-size:12px;color:var(--text3);font-style:italic;margin-top:24px;padding:14px 18px;background:var(--bg);border:0.5px solid #C8CCDC;border-radius:var(--radius-md)}
-
-/* FEES */
-.fee-card{background-color:white;border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:40px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
-.fee-icon{width:56px;height:56px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center}
-.fee-icon svg{width:26px;height:26px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round}
-.fee-card h3{font-size:20px;font-weight:500;color:var(--text)}
-.fee-card h3 em{font-style:normal;color:var(--primary);font-family:'Cormorant Garamond',serif;font-size:26px}
-.fee-card>p{font-size:15px;color:var(--text2);line-height:1.75;max-width:480px}
-.fee-points{display:flex;flex-direction:column;gap:10px;width:100%;max-width:440px}
-.fee-point{display:flex;align-items:flex-start;gap:10px;text-align:left;font-size:13px;color:var(--text2);line-height:1.5}
-.fee-point::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-dec);flex-shrink:0;margin-top:5px}
+.disclaimer{
+  font-size:13.5px;
+  color:var(--text3);
+  font-style:italic;
+  margin-top:32px;
+  padding:18px 24px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+}
 
 /* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:40px}
-.contact-detail{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);margin-bottom:12px}
-.contact-detail svg{width:16px;height:16px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round;flex-shrink:0}
-.contact-form{background:var(--bg2);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:14px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-group{display:flex;flex-direction:column;gap:5px}
-.form-group label{font-size:12px;color:var(--text2);font-weight:500}
-.form-group input,.form-group select,.form-group textarea{border:0.5px solid #C8CCDC;border-radius:var(--radius-md);padding:8px 10px;font-size:13px;background:#fff;color:var(--text);font-family:'DM Sans',sans-serif}
-.form-group textarea{resize:vertical;min-height:80px}
-.form-submit{padding:10px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-md);font-size:14px;cursor:pointer}
-footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px}
-.footer-brand p{font-size:13px;color:var(--text2);line-height:1.6;margin-top:12px;max-width:240px}
-.footer-col h4{font-size:12px;font-weight:500;color:var(--text);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em}
-.footer-col a{display:block;font-size:13px;color:var(--text2);text-decoration:none;margin-bottom:6px;cursor:pointer}
-.footer-col a:hover{color:var(--primary)}
-.footer-bottom{padding:16px 32px;border-top:0.5px solid #C8CCDC;background:#fff;display:flex;justify-content:space-between;align-items:center}
-.footer-bottom p{font-size:12px;color:var(--text2)}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1.25fr;
+  gap:56px;
+}
+.contact-detail{
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  font-size:15px;
+  color:var(--text2);
+  margin-bottom:28px;
+}
+.contact-detail svg{
+  width:20px;
+  height:20px;
+  fill:none;
+  stroke:var(--primary);
+  stroke-width:2.2;
+  stroke-linecap:round;
+  flex-shrink:0;
+  margin-top:4px;
+}
+.contact-form{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:36px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  box-shadow:var(--shadow-md);
+}
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.form-group label{
+  font-size:13.5px;
+  color:var(--text2);
+  font-weight:600;
+}
+.form-group input, .form-group textarea{
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:12px 14px;
+  font-size:15px;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  transition:border-color .2s ease;
+}
+.form-group input:focus, .form-group textarea:focus{
+  outline:none;
+  border-color:var(--primary);
+  background:#fff;
+}
+.form-group textarea{
+  resize:vertical;
+  min-height:100px;
+}
+.form-submit{
+  padding:14px;
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  border-radius:var(--radius-md);
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:background .2s ease;
+}
+.form-submit:hover{
+  background:var(--primary-dark);
+}
 
-/* =========================================================
-   RESPONSIVE LAYOUT RULES (MOBILE & TABLET SINGLE-COLUMN)
-   ========================================================= */
+/* PRIVACY POLICY PAGE */
+.policy-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:48px;
+  box-shadow:var(--shadow-sm);
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  width:100%;
+}
+.policy-card h3{
+  font-size:20px;
+  font-weight:600;
+  color:var(--text);
+  margin-top:10px;
+}
+.policy-card p, .policy-card ul{
+  font-size:16px;
+  color:var(--text2);
+  line-height:1.75;
+}
+.policy-card ul{
+  padding-left:24px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* FOOTER */
+footer{
+  padding:72px 0 44px;
+  border-top:1px solid var(--border);
+  background:#fff;
+  position:relative;
+  z-index:2;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.8fr 1fr 1fr;
+  gap:64px;
+}
+.footer-brand img{
+  width:190px;
+  height:auto;
+  display:block;
+  margin-bottom:18px;
+}
+.footer-brand p{
+  font-size:14.5px;
+  color:var(--text2);
+  line-height:1.7;
+  max-width:320px;
+}
+.footer-col h4{
+  font-size:13px;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:18px;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+}
+.footer-col a{
+  display:block;
+  font-size:14.5px;
+  color:var(--text2);
+  text-decoration:none;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:color .2s ease;
+}
+.footer-col a:hover{
+  color:var(--primary);
+}
+.footer-bottom{
+  padding:24px 0;
+  border-top:1px solid var(--border);
+  background:#fff;
+  position:relative;
+  z-index:2;
+}
+.footer-bottom-wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:13.5px;
+  color:var(--text3);
+}
+.footer-bottom-links{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.footer-bottom-links a{
+  color:var(--text3);
+  text-decoration:none;
+  cursor:pointer;
+}
+.footer-bottom-links a:hover{
+  color:var(--primary);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .hero-grid, .about-hero-grid, .contact-grid, .personal-section, .story-layout{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .pain-grid, .resource-grid{
+    grid-template-columns:1fr 1fr;
+  }
+  .forward-list, .service-grid, .agency-grid, .cred-grid{
+    grid-template-columns:1fr;
+  }
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
 @media (max-width: 768px) {
-  .site { border-radius: 0; border: none; }
-  
-  /* Nav */
-  nav { flex-direction: column; gap: 16px; padding: 16px 20px; position: static; text-align: center; }
-  .nav-links { flex-wrap: wrap; justify-content: center; gap: 14px 18px; }
-  .nav-cta { width: 100%; max-width: 280px; padding: 9px 16px; }
-
-  /* Sections Spacing */
-  .hero, .about-hero, .section-white, .section-alt, .section-bg, .about-section, .about-section-alt, .about-cta, .cta-banner {
-    padding: 36px 20px !important;
+  .nav-wrap{
+    grid-template-columns:1fr;
+    gap:16px;
+    padding:16px 20px;
+    align-items:center;
   }
-
-  /* Grid Layouts to Single Column */
-  .hero, 
-  .pain-grid, 
-  .forward-list, 
-  .service-grid, 
-  .service-items-2col,
-  .about-hero, 
-  .cred-grid, 
-  .personal-section, 
-  .resource-grid, 
-  .agency-grid, 
-  .contact-grid, 
-  .form-row, 
-  footer {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
+  .brand-container{
+    justify-content:center;
   }
-
-  /* Buttons Full-Width on Mobile */
-  .hero-btns, .cta-banner-btns {
-    flex-direction: column;
-    width: 100%;
+  .nav-menu-container{
+    flex-direction:column;
+    gap:16px;
   }
-  .btn-gold, .btn-ghost {
-    width: 100%;
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px 20px;
   }
-
-  /* Process Steps Stacking */
-  .process-steps {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .nav-cta{
+    width:100%;
+    max-width:280px;
   }
-  .process-steps::before {
-    display: none;
+  .hero h1{font-size:32px}
+  .hero h1 em{font-size:38px}
+  h2{font-size:28px}
+  h2 em{font-size:34px}
+  .hero-btns, .cta-banner-btns{
+    flex-direction:column;
+    width:100%;
   }
-
-  /* Typography Adjustments */
-  .hero h1 { font-size: 26px; }
-  .hero h1 em { font-size: 30px; }
-  .about-name { font-size: 24px; }
-  .about-h2, h2 { font-size: 22px; }
-  .about-h2 em, h2 em { font-size: 26px; }
-
-  /* Images / Photos */
-  .about-photo-wrap { max-width: 260px; margin: 0 auto; }
-  .personal-photo-wrap { max-width: 100%; }
-
-  /* Footer */
-  .footer-bottom {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-    padding: 20px;
+  .btn-gold, .btn-ghost{
+    width:100%;
   }
-  .footer-brand p { max-width: 100%; }
+  .process-steps{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  .process-steps::before{display:none}
+  .pain-grid, .resource-grid{
+    grid-template-columns:1fr;
+  }
+  .form-row{
+    grid-template-columns:1fr;
+  }
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .footer-bottom-wrap{
+    flex-direction:column;
+    gap:12px;
+    text-align:center;
+  }
+  .policy-card{
+    padding:28px 20px;
+  }
 }
 </style>
 </head>
 <body>
+
 <div class="site">
   <nav>
-    <img style="width:158px;height:auto" src="img/logo.png" alt="Advocate Forward Logo" />
-    <ul class="nav-links">
-      <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
-      <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
-      <li><a onclick="showPage('about')" id="nav-about">About</a></li>
-      <li><a onclick="showPage('resources')" id="nav-resources">Resources</a></li>
-      <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
-    </ul>
-    <button class="nav-cta" onclick="showPage('contact')">Get started</button>
+    <div class="container nav-wrap">
+      <div class="brand-container">
+        <img class="brand-img" src="img/logo-transparent.png" alt="Advocate Forward Logo" onclick="showPage('home')" />
+      </div>
+      <div class="nav-menu-container">
+        <ul class="nav-links">
+          <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+          <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
+          <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+          <li><a onclick="showPage('resources')" id="nav-resources">Resources</a></li>
+          <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" onclick="showPage('contact')">Get started</button>
+      </div>
+    </div>
   </nav>
 
   <!-- HOME PAGE -->
   <div class="page active" id="page-home">
     <div class="hero">
-      <div>
-        <span class="hero-tag">Nebraska Special Education Advocacy</span>
-        <h1>You don't have to walk into your next meeting <em>alone.</em></h1>
-        <p class="hero-sub">You <strong>could</strong> attend IEP meetings without help. But why would you? Your child has legal rights and we bring the knowledge, the experience, and the confidence to make sure those rights are heard.<br><br>Bring the expertise with you.</p>
-        <div class="hero-btns">
-          <button class="btn-gold" onclick="showPage('contact')">Book a free call</button>
-          <button class="btn-ghost" onclick="showPage('services')">See how we help</button>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <div style="display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:rgba(255,255,255,0.07);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.1)">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5D485" stroke-width="2" stroke-linecap="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
-          </div>
-          <div>
-            <p style="font-size:13px;font-weight:600;color:#fff;margin-bottom:3px;line-height:1.3">Experienced special education advocate</p>
-            <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5">24 years working in the special education field as a teacher, consultant, and parent</p>
+      <div class="container hero-grid">
+        <div>
+          <span class="hero-tag">Nebraska Special Education Advocacy</span>
+          <h1>You don't have to walk into your next meeting <em>alone.</em></h1>
+          <p class="hero-sub">You <strong>could</strong> attend IEP meetings without help. But why would you? Your child has legal rights and we bring the knowledge, the experience, and the confidence to make sure those rights are heard.<br><br>Bring the expertise with you.</p>
+          <div class="hero-btns">
+            <button class="btn-gold" onclick="showPage('contact')">Book a free call</button>
+            <button class="btn-ghost" onclick="showPage('services')">See how we help</button>
           </div>
         </div>
-        <div style="display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:rgba(255,255,255,0.07);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.1)">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5D485" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg>
+        <div class="hero-points">
+          <div class="hero-point-card">
+            <div class="hero-point-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5D485" stroke-width="2" stroke-linecap="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            </div>
+            <div>
+              <h3>Experienced special education advocate</h3>
+              <p>24 years working in the special education field as a teacher, consultant, and parent</p>
+            </div>
           </div>
-          <div>
-            <p style="font-size:13px;font-weight:600;color:#fff;margin-bottom:3px;line-height:1.3">Serving Nebraska families statewide</p>
-            <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5">Remote services across Nebraska and in-person support in the Omaha metro area</p>
+          <div class="hero-point-card">
+            <div class="hero-point-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5D485" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg>
+            </div>
+            <div>
+              <h3>Serving Nebraska families statewide</h3>
+              <p>Remote services across Nebraska and in-person support in the Omaha metro area</p>
+            </div>
           </div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:rgba(255,255,255,0.07);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.1)">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5D485" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-          <div>
-            <p style="font-size:13px;font-weight:600;color:#fff;margin-bottom:3px;line-height:1.3">A parent who has been in your shoes</p>
-            <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5">Lived experience as a parent of a child with complex disabilities</p>
+          <div class="hero-point-card">
+            <div class="hero-point-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5D485" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <h3>A parent who has been in your shoes</h3>
+              <p>Lived experience as a parent of a child with complex disabilities</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="section-white">
-      <p class="section-label">Sound familiar?</p>
-      <h2>You're not the only one who has felt this way</h2>
-      <p class="section-sub">Whether you're walking into your first IEP meeting or your fifteenth, navigating special education can feel overwhelming, confusing, and lonely.</p>
-      <div class="pain-grid">
-        <div class="pain-card"><p class="q">"I sat in that meeting and had no idea what they were saying."</p><p class="a">IEP meetings are full of jargon and legal language. We translate it before, during, and after the meeting.</p></div>
-        <div class="pain-card"><p class="q">"I didn't know what I could ask for."</p><p class="a">Most parents don't. IDEA gives you powerful rights including the right to request evaluations, challenge decisions, and demand appropriate services.</p></div>
-        <div class="pain-card"><p class="q">"It felt like ten people against just me."</p><p class="a">You deserve someone in your corner who knows the law, knows the process, and knows how to speak up.</p></div>
+      <div class="container">
+        <p class="section-label">Sound familiar?</p>
+        <h2>You're not the only one who has felt this way</h2>
+        <p class="section-sub">Whether you're walking into your first IEP meeting or your fifteenth, navigating special education can feel overwhelming, confusing, and lonely.</p>
+        <div class="pain-grid">
+          <div class="pain-card">
+            <p class="q">"I sat in that meeting and had no idea what they were saying."</p>
+            <p class="a">IEP meetings are full of jargon and legal language. We translate it before, during, and after the meeting.</p>
+          </div>
+          <div class="pain-card">
+            <p class="q">"I didn't know what I could ask for."</p>
+            <p class="a">Most parents don't. IDEA gives you powerful rights including the right to request evaluations, challenge decisions, and demand appropriate services.</p>
+          </div>
+          <div class="pain-card">
+            <p class="q">"It felt like ten people against just me."</p>
+            <p class="a">You deserve someone in your corner who knows the law, knows the process, and knows how to speak up.</p>
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="section-alt">
-      <p class="section-label">We help families <span>Advocate Forward</span></p>
-      <h2>Here's how we move <em>forward</em> together</h2>
-      <p class="section-sub">Every family's journey is different. Here are the ways Advocate Forward helps you take the next step with confidence.</p>
-      <div class="forward-list">
-        <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg></div><div><p class="forward-verb">Understand your rights</p><p class="forward-desc">We explain what IDEA, Section 504, and Nebraska state law actually guarantee your child in plain language.</p></div></div>
-        <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><div><p class="forward-verb">Prepare for your next IEP meeting</p><p class="forward-desc">We review your child's IEP, identify gaps, and walk you in prepared with the right questions and confidence.</p></div></div>
-        <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><div><p class="forward-verb">Request the services your child deserves</p><p class="forward-desc">We help you ask for evaluations, independent assessments, and additional services your child may be eligible to receive.</p></div></div>
-        <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><p class="forward-verb">Have someone in your corner</p><p class="forward-desc">We attend IEP meetings alongside you so you're never outnumbered, never alone, and never without a voice.</p></div></div>
-        <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><p class="forward-verb">Challenge decisions you disagree with</p><p class="forward-desc">We guide you through mediation, state complaints, and dispute resolution when the school's decisions aren't right.</p></div></div>
-        <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><p class="forward-verb">Build knowledge that lasts</p><p class="forward-desc">We don't just advocate for you. We teach you. Every family leaves more informed and more capable of advocating on their own.</p></div></div>
-        <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h4"/><path d="M18 15l4 4-4 4"/></svg></div><div><p class="forward-verb">Navigate transitions with confidence</p><p class="forward-desc">From preschool to school age, elementary to secondary, and school to adult services.</p></div></div>
-        <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><p class="forward-verb">Get answers when it matters most</p><p class="forward-desc">When something changes unexpectedly, you have someone to call who knows what to do.</p></div></div>
+      <div class="container">
+        <p class="section-label">We help families <span>Advocate Forward</span></p>
+        <h2>Here's how we move <em>forward</em> together</h2>
+        <p class="section-sub">Every family's journey is different. Here are the ways Advocate Forward helps you take the next step with confidence.</p>
+        <div class="forward-list">
+          <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg></div><div><p class="forward-verb">Understand your rights</p><p class="forward-desc">We explain what IDEA, Section 504, and Nebraska state law actually guarantee your child in plain language.</p></div></div>
+          <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><div><p class="forward-verb">Prepare for your next IEP meeting</p><p class="forward-desc">We review your child's IEP, identify gaps, and walk you in prepared with the right questions and confidence.</p></div></div>
+          <div class="forward-item"><div class="forward-icon"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><div><p class="forward-verb">Request the services your child deserves</p><p class="forward-desc">We help you ask for evaluations, independent assessments, and additional services your child may be eligible to receive.</p></div></div>
+          <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><p class="forward-verb">Have someone in your corner</p><p class="forward-desc">We attend IEP meetings alongside you so you're never outnumbered, never alone, and never without a voice.</p></div></div>
+          <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><p class="forward-verb">Challenge decisions you disagree with</p><p class="forward-desc">We guide you through mediation, state complaints, and dispute resolution when the school's decisions aren't right.</p></div></div>
+          <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><p class="forward-verb">Build knowledge that lasts</p><p class="forward-desc">We don't just advocate for you. We teach you. Every family leaves more informed and more capable of advocating on their own.</p></div></div>
+          <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h4"/><path d="M18 15l4 4-4 4"/></svg></div><div><p class="forward-verb">Navigate transitions with confidence</p><p class="forward-desc">From preschool to school age, elementary to secondary, and school to adult services.</p></div></div>
+          <div class="forward-item"><div class="forward-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><p class="forward-verb">Get answers when it matters most</p><p class="forward-desc">When something changes unexpectedly, you have someone to call who knows what to do.</p></div></div>
+        </div>
       </div>
     </div>
+
     <div class="section-white">
-      <p class="section-label">What we do</p>
-      <h2>How we help</h2>
-      <p class="section-sub">Advocate Forward exists to make sure parents of children with special needs are never alone in the process.</p>
-      <div class="service-grid">
-        <div class="service-card" style="background:var(--bg);border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:12px">
-          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-          <h3 style="font-size:16px;font-weight:500;color:var(--text)">Parent advocacy</h3>
-          <p style="font-size:13px;color:var(--text2);line-height:1.6;flex:1">Direct representation and support for families navigating IEPs, evaluations, and special education rights. We stand beside you so you are never alone in the process.</p>
-          <div class="service-items-1col">
-            <div class="service-item">IEP meeting preparation and attendance</div>
-            <div class="service-item">Evaluation and eligibility support</div>
-            <div class="service-item">Dispute resolution guidance</div>
-            <div class="service-item">Ongoing case management</div>
+      <div class="container">
+        <p class="section-label">What we do</p>
+        <h2>How we help</h2>
+        <p class="section-sub">Advocate Forward exists to make sure parents of children with special needs are never alone in the process.</p>
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            <h3>Parent advocacy</h3>
+            <p>Direct representation and support for families navigating IEPs, evaluations, and special education rights. We stand beside you so you are never alone in the process.</p>
+            <div class="service-items-1col">
+              <div class="service-item">IEP meeting preparation and attendance</div>
+              <div class="service-item">Evaluation and eligibility support</div>
+              <div class="service-item">Dispute resolution guidance</div>
+              <div class="service-item">Ongoing case management</div>
+            </div>
+            <button class="service-link" onclick="showPage('services')">Learn more about our services →</button>
           </div>
-          <button class="service-link" onclick="showPage('services')">Learn more about our services</button>
-        </div>
-        <div class="service-card" style="background:var(--bg);border:0.5px solid #C8CCDC;border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:12px">
-          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-          <h3 style="font-size:16px;font-weight:500;color:var(--text)">Educator support</h3>
-          <p style="font-size:13px;color:var(--text2);line-height:1.6;flex:1">Professional development and training for school districts and educators seeking to strengthen their relationships with families and improve special education practice.</p>
-          <div class="service-items-1col">
-            <div class="service-item">Parent rights workshops and training</div>
-            <div class="service-item">Staff IDEA and compliance education</div>
-            <div class="service-item">Family engagement strategies</div>
-            <div class="service-item">Behavior consultation (PFA/SBT)</div>
+          <div class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+            <h3>Educator support</h3>
+            <p>Professional development and training for school districts and educators seeking to strengthen their relationships with families and improve special education practice.</p>
+            <div class="service-items-1col">
+              <div class="service-item">Parent rights workshops and training</div>
+              <div class="service-item">Staff IDEA and compliance education</div>
+              <div class="service-item">Family engagement strategies</div>
+              <div class="service-item">Behavior consultation (PFA/SBT)</div>
+            </div>
+            <button class="service-link" onclick="showPage('contact')">Contact us to learn more →</button>
           </div>
-          <button class="service-link" onclick="showPage('contact')">Contact us to learn more</button>
         </div>
       </div>
     </div>
+
     <div class="section-bg">
-      <p class="section-label">How it works</p>
-      <h2>Getting started takes 20 minutes</h2>
-      <p class="section-sub">No paperwork, no commitment. Just a conversation.</p>
-      <div class="process-steps">
-        <div class="step"><div class="step-num">1</div><h4>Free discovery call</h4><p>20 minutes to tell us what's going on</p></div>
-        <div class="step"><div class="step-num">2</div><h4>Review your case</h4><p>We dig into the IEP, records, and history</p></div>
-        <div class="step"><div class="step-num">3</div><h4>Build a plan</h4><p>A clear path forward, tailored to your child</p></div>
-        <div class="step"><div class="step-num">4</div><h4>Advocate together</h4><p>We walk in beside you every step</p></div>
+      <div class="container">
+        <p class="section-label">How it works</p>
+        <h2>Getting started takes 20 minutes</h2>
+        <p class="section-sub">No paperwork, no commitment. Just a conversation.</p>
+        <div class="process-steps">
+          <div class="step"><div class="step-num">1</div><h4>Free discovery call</h4><p>20 minutes to tell us what's going on</p></div>
+          <div class="step"><div class="step-num">2</div><h4>Review your case</h4><p>We dig into the IEP, records, and history</p></div>
+          <div class="step"><div class="step-num">3</div><h4>Build a plan</h4><p>A clear path forward, tailored to your child</p></div>
+          <div class="step"><div class="step-num">4</div><h4>Advocate together</h4><p>We walk in beside you every step</p></div>
+        </div>
       </div>
     </div>
+
     <div class="cta-banner">
-      <h2>Your child's education is too important<br>to <em>navigate alone.</em></h2>
-      <div class="cta-banner-btns">
-        <button class="btn-gold" onclick="showPage('contact')">Book your free call today</button>
-        <button class="btn-ghost" onclick="showPage('services')">Learn about our services</button>
+      <div class="container">
+        <h2>Your child's education is too important<br>to <em>navigate alone.</em></h2>
+        <div class="cta-banner-btns">
+          <button class="btn-gold" onclick="showPage('contact')">Book your free call today</button>
+          <button class="btn-ghost" onclick="showPage('services')">Learn about our services</button>
+        </div>
       </div>
     </div>
   </div>
@@ -426,241 +1343,316 @@ footer{padding:32px;border-top:0.5px solid #C8CCDC;background:#fff;display:grid;
   <!-- SERVICES PAGE -->
   <div class="page" id="page-services">
     <div class="section-white">
-      <p class="section-label">For families</p>
-      <h2>Parent advocacy and IEP support</h2>
-      <p class="section-sub">We stand beside you at every step of your child's special education journey. Contact us to discuss your situation and get a personalized quote.</p>
-      <div class="service-grid">
-        <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Free discovery call</h3><p>Start with a free 20 minute conversation. We will learn about your child's situation and explain how we can help.</p></div>
-        <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><h3>IEP review and consultation</h3><p>We review your child's IEP for compliance and appropriate services, then prepare you for the meeting ahead.</p><div class="service-items-1col"><div class="service-item">Document review and written summary</div><div class="service-item">Pre-meeting coaching and talking points</div><div class="service-item">IEP meeting attendance as your advocate</div></div></div>
-        <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><h3>Evaluation and eligibility support</h3><p>Assistance requesting evaluations, interpreting reports, and understanding eligibility criteria under IDEA.</p><div class="service-items-1col"><div class="service-item">Evaluation request letters and follow-up</div><div class="service-item">Report interpretation and explanation</div></div></div>
-        <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Ongoing case management</h3><p>Full support across your child's entire special education journey from initial evaluation through transitions.</p><div class="service-items-1col"><div class="service-item">IEP monitoring and compliance follow-up</div><div class="service-item">Dispute resolution and mediation support</div><div class="service-item">Crisis and emergency advocacy</div></div></div>
-      </div>
-    </div>
-    <div class="section-alt">
-      <p class="section-label">Fees</p>
-      <h2>Transparent pricing starts with a <em>conversation</em></h2>
-      <p class="section-sub">Every family's situation is different. Rather than publish a one-size-fits-all fee schedule, we discuss fees directly so we can match our services to what your child actually needs.</p>
-      <div class="fee-card">
-        <div class="fee-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <h3>Contact us for <em>fee information</em></h3>
-        <p>We are happy to discuss our fees and what to expect during your free 20 minute discovery call. There is no obligation and no cost to reach out.</p>
-        <div style="width:100%;height:0.5px;background:#C8CCDC"></div>
-        <div class="fee-points">
-          <div class="fee-point">Fees are discussed during your free discovery call</div>
-          <div class="fee-point">Services are tailored to your child's specific situation</div>
-          <div class="fee-point">We will never begin work without a clear agreement in place</div>
-          <div class="fee-point">Payment is required prior to services being rendered</div>
+      <div class="container">
+        <p class="section-label">For families</p>
+        <h2>Parent advocacy and IEP support</h2>
+        <p class="section-sub">We stand beside you at every step of your child's special education journey. Contact us to discuss your situation and get a personalized quote.</p>
+        <div class="service-grid">
+          <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Free discovery call</h3><p>Start with a free 20 minute conversation. We will learn about your child's situation and explain how we can help.</p></div>
+          <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><h3>IEP review and consultation</h3><p>We review your child's IEP for compliance and appropriate services, then prepare you for the meeting ahead.</p><div class="service-items-1col"><div class="service-item">Document review and written summary</div><div class="service-item">Pre-meeting coaching and talking points</div><div class="service-item">IEP meeting attendance as your advocate</div></div></div>
+          <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><h3>Evaluation and eligibility support</h3><p>Assistance requesting evaluations, interpreting reports, and understanding eligibility criteria under IDEA.</p><div class="service-items-1col"><div class="service-item">Evaluation request letters and follow-up</div><div class="service-item">Report interpretation and explanation</div></div></div>
+          <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Ongoing case management</h3><p>Full support across your child's entire special education journey from initial evaluation through transitions.</p><div class="service-items-1col"><div class="service-item">IEP monitoring and compliance follow-up</div><div class="service-item">Dispute resolution and mediation support</div><div class="service-item">Crisis and emergency advocacy</div></div></div>
         </div>
-        <button class="btn-gold" onclick="showPage('contact')">Book your free discovery call</button>
-        <p style="font-size:12px;color:var(--text3);font-style:italic">Or reach us directly at info@advocateforward.com</p>
       </div>
     </div>
-    <div class="cta-banner" style="padding:48px 32px">
-      <h2 style="font-size:24px;margin-bottom:24px">Ready to get started?</h2>
-      <div class="cta-banner-btns"><button class="btn-gold" onclick="showPage('contact')">Book your free call</button></div>
+
+    <div class="section-alt">
+      <div class="container">
+        <p class="section-label">Fees</p>
+        <h2>Transparent pricing starts with a <em>conversation</em></h2>
+        <p class="section-sub">Every family's situation is different. Rather than publish a one-size-fits-all fee schedule, we discuss fees directly so we can match our services to what your child actually needs.</p>
+        <div class="fee-card">
+          <div class="fee-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <h3>Contact us for <em>fee information</em></h3>
+          <p>We are happy to discuss our fees and what to expect during your free 20 minute discovery call. There is no obligation and no cost to reach out.</p>
+          <div style="width:100%;height:1px;background:var(--border)"></div>
+          <div class="fee-points">
+            <div class="fee-point">Fees are discussed during your free discovery call</div>
+            <div class="fee-point">Services are tailored to your child's specific situation</div>
+            <div class="fee-point">We will never begin work without a clear agreement in place</div>
+            <div class="fee-point">Payment is required prior to services being rendered</div>
+          </div>
+          <button class="btn-gold" onclick="showPage('contact')">Book your free discovery call</button>
+          <p style="font-size:13.5px;color:var(--text3);font-style:italic">Or reach us directly at <a href="mailto:info@advocateforward.com">info@advocateforward.com</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-banner" style="padding:64px 0">
+      <div class="container">
+        <h2 style="font-size:30px;margin-bottom:24px">Ready to get started?</h2>
+        <div class="cta-banner-btns"><button class="btn-gold" onclick="showPage('contact')">Book your free call</button></div>
+      </div>
     </div>
   </div>
 
   <!-- ABOUT PAGE -->
   <div class="page" id="page-about">
     <div class="about-hero">
-      <div class="about-photo-wrap">
-        <img src="img/sharon_elliott.jpg" alt="Sharon Elliott, M.Ed., founder of Advocate Forward"/>
-      </div>
-      <div>
-        <p style="font-size:16px;font-weight:600;color:#F5D485;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px">About the founder</p>
-        <p class="about-name">Sharon Elliott, M.Ed.</p>
-        <p class="about-title">Special Education Advocate and Consultant</p>
-        <p class="about-intro">Sharon Elliott brings something rare to special education advocacy: with <strong>24 years of experience</strong> in the special education field, she has sat at the IEP table as a <strong>teacher</strong>, as a <strong>consultant</strong>, and as a <strong>parent</strong>. That combination of deep expertise and lived experience is what makes Advocate Forward different.</p>
-        <div class="about-tag"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Based in Nebraska, serving families statewide</div><br>
-        <div class="about-tag"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg>Master of Education (M.Ed.) in Special Education</div><br>
-        <div class="about-tag"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg>Nebraska-certified special education teacher</div>
-      </div>
-    </div>
-    <div class="about-section">
-      <p class="about-label">My story</p>
-      <h2 class="about-h2">I know this world from <em>every angle</em></h2>
-      <p class="body-text">For more than a decade, I worked directly in classrooms as a certified special education teacher, supporting students with diverse and complex learning needs. I learned firsthand what meaningful inclusion looks like, what a well-written IEP can do for a child, and where the system too often falls short.</p>
-      <div class="pull-quote"><p>Then I became a parent of a child with complex disabilities. And everything I thought I knew about navigating the system was put to the test in an entirely new way.</p></div>
-      <p class="body-text">Sitting on the other side of that IEP table, I felt the same confusion, the same overwhelm, and the same sense of being outnumbered that so many families describe. That experience didn't just change how I saw my work. It clarified exactly <strong>why</strong> this work matters.</p>
-      <p class="body-text">I went on to work for a parent training and information center, spending years helping families across Nebraska understand their rights and learn to advocate effectively for their children. I became a recognized speaker at disability conferences, created training programs on the IEP process, transition planning, and evaluation procedures, and built a reputation for translating complex legal concepts into language that real families can understand and use.</p>
-      <p class="body-text">Advocate Forward is the culmination of all of it. Every credential, every classroom, every conference, and every late night as a parent trying to figure out what my child needed and how to ask for it.</p>
-    </div>
-    <div class="about-section-alt">
-      <p class="about-label">Credentials and experience</p>
-      <h2 class="about-h2">What Sharon brings to the table</h2>
-      <p style="font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:28px;max-width:580px">A combination of academic preparation, direct classroom experience, behavior expertise, personal advocacy experience, and systems-level knowledge that very few advocates can offer.</p>
-      <div class="cred-grid">
-        <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><p class="cred-title" style="margin-bottom:0">Master of Education (M.Ed.)</p><p class="cred-desc">Advanced graduate study in special education practice, policy and laws, assessment, inclusion and family engagement.</p></div></div>
-        <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg></div><div><p class="cred-title">Nebraska-Certified Special Education Teacher</p><p class="cred-desc">24 years of experience in the special education field, including 12 years of direct classroom experience supporting students with diverse and complex learning needs.</p></div></div>
-        <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><p class="cred-title">Behavior Consultant</p><p class="cred-desc">Expertise in understanding and supporting students with challenging behaviors and complex disabilities.</p></div></div>
-        <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><p class="cred-title">Parent Training and Information Center</p><p class="cred-desc">Direct experience helping families understand their rights and advocate effectively.</p></div></div>
-        <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><p class="cred-title">Recognized Conference Speaker</p><p class="cred-desc">Sharing expertise with educators, families, and advocates at disability conferences.</p></div></div>
-        <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><div><p class="cred-title">Training Creator</p><p class="cred-desc">Creator of multiple trainings on the IEP process, transition planning, and evaluation procedures.</p></div></div>
-        <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><div><p class="cred-title">Lived Parent Experience</p><p class="cred-desc">A parent of a child with complex disabilities, bringing firsthand insight into the challenges families face.</p></div></div>
-        <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-6a2 2 0 012-2h8z"/></svg></div><div><p class="cred-title">Bridge Builder</p><p class="cred-desc">Demonstrated ability to build trusting relationships between schools and the families they serve.</p></div></div>
-        <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zM12 8v4l3 3"/></svg></div><div><p class="cred-title">Charting the LifeCourse (CtLC) Ambassador</p><p class="cred-desc">Trained to champion person-centered and family-centered planning frameworks, using tools to help people with disabilities envision and plan for a good life.</p></div></div>
-        <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><p class="cred-title">COPAA Member and SEAT 2.0 Trainee</p><p class="cred-desc">Council of Parent Attorneys and Advocates member, deepening professional expertise as an effective non-attorney special education advocate.</p></div></div>
-      </div>
-    </div>
-    <div class="about-section">
-      <p class="about-label">Why this work matters</p>
-      <h2 class="about-h2">Advocacy isn't just a career. It's personal.</h2>
-      <div class="personal-section">
+      <div class="container about-hero-grid">
+        <div class="about-photo-wrap">
+          <img src="img/sharon_elliott.jpg" alt="Sharon Elliott, M.Ed., founder of Advocate Forward"/>
+        </div>
         <div>
-          <p class="body-text">When Sharon became a parent of a child with complex disabilities, the professional world she knew looked very different from the other side of the table. She experienced the late nights researching evaluations, the anxiety before IEP meetings, the moments of feeling alone in a room full of experts.</p>
-          <p class="body-text">That experience is not something Sharon keeps separate from her work. It is at the center of it. She carries that understanding into every family she supports.</p>
-          <div class="pull-quote" style="margin-top:20px"><p>I know what it feels like to love a child with complex needs and not know where to turn. That is exactly who I built Advocate Forward for.</p></div>
-        </div>
-        <div class="personal-photo-wrap">
-          <img src="img/sharon_and_child.jpg" alt="Sharon and her child" style="object-position: center center;"/>
+          <p style="font-size:15px;font-weight:700;color:#F5D485;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px">About the founder</p>
+          <p class="about-name">Sharon Elliott, M.Ed.</p>
+          <p class="about-title">Special Education Advocate and Consultant</p>
+          <p class="about-intro">Sharon Elliott brings something rare to special education advocacy: with <strong>24 years of experience</strong> in the special education field, she has sat at the IEP table as a <strong>teacher</strong>, as a <strong>consultant</strong>, and as a <strong>parent</strong>. That combination of deep expertise and lived experience is what makes Advocate Forward different.</p>
+          <div class="about-tag"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Based in Nebraska, serving families statewide</div><br>
+          <div class="about-tag"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg>Master of Education (M.Ed.) in Special Education</div><br>
+          <div class="about-tag"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg>Nebraska-certified special education teacher</div>
         </div>
       </div>
     </div>
-    <div class="about-cta">
-      <h2>Ready to have <em>Sharon</em> in your corner?</h2>
-      <p>Book a free 20-minute discovery call and let's talk about your child, your situation, and how Advocate Forward can help you move forward.</p>
-      <button class="btn-gold" onclick="showPage('contact')">Book your free call</button>
+
+    <!-- MY STORY: Fully expanded across the 1240px container -->
+    <div class="section-white">
+      <div class="container">
+        <p class="section-label">My story</p>
+        <h2>I know this world from <em>every angle</em></h2>
+        <div class="story-layout">
+          <div>
+            <p class="body-text">For more than a decade, I worked directly in classrooms as a certified special education teacher, supporting students with diverse and complex learning needs. I learned firsthand what meaningful inclusion looks like, what a well-written IEP can do for a child, and where the system too often falls short.</p>
+            <div class="pull-quote"><p>Then I became a parent of a child with complex disabilities. And everything I thought I knew about navigating the system was put to the test in an entirely new way.</p></div>
+            <p class="body-text">Sitting on the other side of that IEP table, I felt the same confusion, the same overwhelm, and the same sense of being outnumbered that so many families describe. That experience didn't just change how I saw my work. It clarified exactly <strong>why</strong> this work matters.</p>
+          </div>
+          <div>
+            <p class="body-text">I went on to work for a parent training and information center, spending years helping families across Nebraska understand their rights and learn to advocate effectively for their children. I became a recognized speaker at disability conferences, created training programs on the IEP process, transition planning, and evaluation procedures, and built a reputation for translating complex legal concepts into language that real families can understand and use.</p>
+            <p class="body-text">Advocate Forward is the culmination of all of it. Every credential, every classroom, every conference, and every late night as a parent trying to figure out what my child needed and how to ask for it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-alt">
+      <div class="container">
+        <p class="section-label">Credentials and experience</p>
+        <h2>What Sharon brings to the table</h2>
+        <p class="section-sub">A combination of academic preparation, direct classroom experience, behavior expertise, personal advocacy experience, and systems-level knowledge that very few advocates can offer.</p>
+        <div class="cred-grid">
+          <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><p class="cred-title">Master of Education (M.Ed.)</p><p class="cred-desc">Advanced graduate study in special education practice, policy and laws, assessment, inclusion and family engagement.</p></div></div>
+          <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg></div><div><p class="cred-title">Nebraska-Certified Special Education Teacher</p><p class="cred-desc">24 years of experience in the special education field, including 12 years of direct classroom experience supporting students with diverse and complex learning needs.</p></div></div>
+          <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><p class="cred-title">Behavior Consultant</p><p class="cred-desc">Expertise in understanding and supporting students with challenging behaviors and complex disabilities.</p></div></div>
+          <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><p class="cred-title">Parent Training and Information Center</p><p class="cred-desc">Direct experience helping families understand their rights and advocate effectively.</p></div></div>
+          <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><p class="cred-title">Recognized Conference Speaker</p><p class="cred-desc">Sharing expertise with educators, families, and advocates at disability conferences.</p></div></div>
+          <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><div><p class="cred-title">Training Creator</p><p class="cred-desc">Creator of multiple trainings on the IEP process, transition planning, and evaluation procedures.</p></div></div>
+          <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><div><p class="cred-title">Lived Parent Experience</p><p class="cred-desc">A parent of a child with complex disabilities, bringing firsthand insight into the challenges families face.</p></div></div>
+          <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-6a2 2 0 012-2h8z"/></svg></div><div><p class="cred-title">Bridge Builder</p><p class="cred-desc">Demonstrated ability to build trusting relationships between schools and the families they serve.</p></div></div>
+          <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zM12 8v4l3 3"/></svg></div><div><p class="cred-title">Charting the LifeCourse (CtLC) Ambassador</p><p class="cred-desc">Trained to champion person-centered and family-centered planning frameworks, using tools to help people with disabilities envision and plan for a good life.</p></div></div>
+          <div class="cred-card"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><p class="cred-title">COPAA Member and SEAT 2.0 Trainee</p><p class="cred-desc">Council of Parent Attorneys and Advocates member, deepening professional expertise as an effective non-attorney special education advocate.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-white">
+      <div class="container">
+        <p class="section-label">Why this work matters</p>
+        <h2>Advocacy isn't just a career. It's personal.</h2>
+        <div class="personal-section">
+          <div>
+            <p class="body-text">When Sharon became a parent of a child with complex disabilities, the professional world she knew looked very different from the other side of the table. She experienced the late nights researching evaluations, the anxiety before IEP meetings, the moments of feeling alone in a room full of experts.</p>
+            <p class="body-text">That experience is not something Sharon keeps separate from her work. It is at the center of it. She carries that understanding into every family she supports.</p>
+            <div class="pull-quote" style="margin-top:20px"><p>I know what it feels like to love a child with complex needs and not know where to turn. That is exactly who I built Advocate Forward for.</p></div>
+          </div>
+          <div class="personal-photo-wrap">
+            <img src="img/sharon_and_child.jpg" alt="Sharon and her child" style="object-position: center center;"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-banner">
+      <div class="container">
+        <h2>Ready to have <em>Sharon</em> in your corner?</h2>
+        <p style="font-size:17px;color:rgba(255,255,255,0.8);max-width:580px;margin:0 auto 28px;line-height:1.75">Book a free 20-minute discovery call and let's talk about your child, your situation, and how Advocate Forward can help you move forward.</p>
+        <button class="btn-gold" onclick="showPage('contact')">Book your free call</button>
+      </div>
     </div>
   </div>
 
   <!-- RESOURCES PAGE -->
   <div class="page" id="page-resources">
     <div class="section-bg">
-      <p class="section-label">Free resources</p>
-      <h2>Tools to help you advocate <em>Forward</em></h2>
-      <p class="section-sub">Free guides and downloads to help Nebraska families understand their rights and navigate the special education process with confidence.</p>
-      <div class="resource-grid">
-        <!--
-        <div class="resource-card"><span class="resource-tag">Free guide</span><h3>Understanding your child's IEP</h3><p>A walkthrough in plain language of every section of an IEP and what to look for.</p><span class="coming-soon">Coming soon</span></div>
-        <div class="resource-card"><span class="resource-tag">Checklist</span><h3>IEP meeting prep checklist</h3><p>Everything you need to prepare for an IEP meeting and the questions you should be asking.</p><span class="coming-soon">Coming soon</span></div>
-        <div class="resource-card"><span class="resource-tag">Free guide</span><h3>Your rights under IDEA</h3><p>A guide written for families that explains IDEA and what it means for your child.</p><span class="coming-soon">Coming soon</span></div>
-        <div class="resource-card"><span class="resource-tag">Template</span><h3>Written request letter templates</h3><p>Letters you can use to request evaluations, IEEs, and records from your school district.</p><span class="coming-soon">Coming soon</span></div>
-        <div class="resource-card"><span class="resource-tag">Reference</span><h3>Nebraska complaint procedures</h3><p>A step by step guide to filing a state complaint or requesting mediation in Nebraska.</p><span class="coming-soon">Coming soon</span></div>
-        <div class="resource-card"><span class="resource-tag">Glossary</span><h3>Special education terms decoded</h3><p>Plain definitions of FAPE, LRE, PWN, ESY so you are never confused in a meeting.</p><span class="coming-soon">Coming soon</span></div>
-        -->
-        <div class="resource-card"><span class="resource-tag">Regulation</span><h3>Nebraska Special Education Regulations (Rule 51)</h3><p>Nebraska's governing regulations for special education programs, Title 92 Nebraska Administrative Code, Chapter 51. Effective May 2022.</p><a class="resource-link" href="http://www.education.ne.gov/wp-content/uploads/2017/10/Clean51_2022.pdf" target="_blank">Download PDF from NDE &#8599;</a></div>
-        <div class="resource-card"><span class="resource-tag">Checklist</span><h3>Transition checklists</h3><p>Guides to help families prepare for each major transition, from early intervention to school age, elementary to secondary, and school to adult services.</p><a class="resource-link" href="https://www.education.ne.gov/wp-content/uploads/2021/09/Transition-Timeline-sped.pdf" target="_blank">Transition Timeline &#8599;</a><br style="margin-bottom:6px"><a class="resource-link" href="https://www.education.ne.gov/wp-content/uploads/2021/09/Transition-Focused-IEP-Agenda-sped.pdf" target="_blank">Transition Focused IEP Agenda &#8599;</a><br style="margin-bottom:6px"><a class="resource-link" href="https://www.education.ne.gov/wp-content/uploads/2021/09/Tip-Sheet-Transition-for-Parents-sped.pdf" target="_blank">Tip Sheet: Transition for Parents &#8599;</a></div>
-        <div class="resource-card"><span class="resource-tag">Resource</span><h3>Person-centered planning</h3><p>Flexible tools that can be used by anyone to help you explore, problem-solve, make decisions, or plan for the future.</p><a class="resource-link" href="https://www.lifecoursetools.com/lifecourse-library/foundational-tools/person-centered/" target="_blank">LifeCourse Tools &#8599;</a></div>
+      <div class="container">
+        <p class="section-label">Free resources</p>
+        <h2>Tools to help you advocate <em>Forward</em></h2>
+        <p class="section-sub">Free guides and downloads to help Nebraska families understand their rights and navigate the special education process with confidence.</p>
+        <div class="resource-grid">
+          <div class="resource-card"><span class="resource-tag">Regulation</span><h3>Nebraska Special Education Regulations (Rule 51)</h3><p>Nebraska's governing regulations for special education programs, Title 92 Nebraska Administrative Code, Chapter 51. Effective May 2022.</p><a class="resource-link" href="http://www.education.ne.gov/wp-content/uploads/2017/10/Clean51_2022.pdf" target="_blank">Download PDF from NDE &#8599;</a></div>
+          <div class="resource-card"><span class="resource-tag">Checklist</span><h3>Transition checklists</h3><p>Guides to help families prepare for each major transition, from early intervention to school age, elementary to secondary, and school to adult services.</p><a class="resource-link" href="https://www.education.ne.gov/wp-content/uploads/2021/09/Transition-Timeline-sped.pdf" target="_blank">Transition Timeline &#8599;</a><br style="margin-bottom:6px"><a class="resource-link" href="https://www.education.ne.gov/wp-content/uploads/2021/09/Transition-Focused-IEP-Agenda-sped.pdf" target="_blank">Transition Focused IEP Agenda &#8599;</a><br style="margin-bottom:6px"><a class="resource-link" href="https://www.education.ne.gov/wp-content/uploads/2021/09/Tip-Sheet-Transition-for-Parents-sped.pdf" target="_blank">Tip Sheet: Transition for Parents &#8599;</a></div>
+          <div class="resource-card"><span class="resource-tag">Resource</span><h3>Person-centered planning</h3><p>Flexible tools that can be used by anyone to help you explore, problem-solve, make decisions, or plan for the future.</p><a class="resource-link" href="https://www.lifecoursetools.com/lifecourse-library/foundational-tools/person-centered/" target="_blank">LifeCourse Tools &#8599;</a></div>
+        </div>
       </div>
     </div>
+
     <div class="section-alt">
-      <p class="section-label">Nebraska organizations</p>
-      <h2>Agencies and organizations that can help</h2>
-      <p class="section-sub">These Nebraska-based agencies provide free or low-cost support, information, and services for families of children with disabilities and special needs.</p>
-      <div class="agency-grid">
-        <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><p class="agency-name">PTI Nebraska</p><p class="agency-type">Parent Training &amp; Information Center</p></div></div><p class="agency-desc">A federally funded center providing free training and information to help families of children with disabilities participate effectively in their children's education. Offers workshops, one-on-one support, and resources statewide.</p><a class="agency-link" href="https://www.pti-nebraska.org" target="_blank">pti-nebraska.org &#8599;</a></div>
-        <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><p class="agency-name">Nebraska Department of Education — Special Education</p><p class="agency-type">State Agency</p></div></div><p class="agency-desc">The state agency overseeing special education services in Nebraska. Provides information on state policies, procedural safeguards, dispute resolution options, and how to file a state complaint.</p><a class="agency-link" href="https://www.education.ne.gov/sped" target="_blank">education.ne.gov/sped &#8599;</a></div>
-        <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><p class="agency-name">Disability Rights Nebraska</p><p class="agency-type">Legal Advocacy</p></div></div><p class="agency-desc">Nebraska's federally designated protection and advocacy organization for people with disabilities. Provides free legal advocacy, information, and referrals for individuals whose rights have been violated.</p><a class="agency-link" href="https://www.disabilityrightsnebraska.org" target="_blank">disabilityrightsnebraska.org &#8599;</a></div>
-        <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div><p class="agency-name">Nebraska Early Development Network</p><p class="agency-type">Early Intervention (Birth to Age 3)</p></div></div><p class="agency-desc">Nebraska's early intervention program for infants and toddlers with developmental delays or disabilities. Provides services to children from birth through age 2 and their families at no cost.</p><a class="agency-link" href="https://www.education.ne.gov/sped/edn" target="_blank">education.ne.gov/sped/edn &#8599;</a></div>
-        <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><div><p class="agency-name">Easterseals Nebraska</p><p class="agency-type">Disability Services &amp; Support</p></div></div><p class="agency-desc">Provides a wide range of services for children and adults with disabilities across Nebraska, including therapy, early intervention, autism services, and family support programs.</p><a class="agency-link" href="https://www.easterseals.com/ne" target="_blank">easterseals.com/ne &#8599;</a></div>
-        <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div><p class="agency-name">Nebraska Vocational Rehabilitation</p><p class="agency-type">Transition &amp; Employment Services</p></div></div><p class="agency-desc">A state agency helping individuals with disabilities prepare for, obtain, and maintain employment. Particularly relevant for students transitioning from school to adult life and families planning for post-secondary goals.</p><a class="agency-link" href="https://www.vr.nebraska.gov" target="_blank">vr.nebraska.gov &#8599;</a></div>
+      <div class="container">
+        <p class="section-label">Nebraska organizations</p>
+        <h2>Agencies and organizations that can help</h2>
+        <p class="section-sub">These Nebraska-based agencies provide free or low-cost support, information, and services for families of children with disabilities and special needs.</p>
+        <div class="agency-grid">
+          <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><p class="agency-name">PTI Nebraska</p><p class="agency-type">Parent Training &amp; Information Center</p></div></div><p class="agency-desc">A federally funded center providing free training and information to help families of children with disabilities participate effectively in their children's education. Offers workshops, one-on-one support, and resources statewide.</p><a class="agency-link" href="https://www.pti-nebraska.org" target="_blank">pti-nebraska.org &#8599;</a></div>
+          <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zM6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><p class="agency-name">Nebraska Department of Education — Special Education</p><p class="agency-type">State Agency</p></div></div><p class="agency-desc">The state agency overseeing special education services in Nebraska. Provides information on state policies, procedural safeguards, dispute resolution options, and how to file a state complaint.</p><a class="agency-link" href="https://www.education.ne.gov/sped" target="_blank">education.ne.gov/sped &#8599;</a></div>
+          <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><p class="agency-name">Disability Rights Nebraska</p><p class="agency-type">Legal Advocacy</p></div></div><p class="agency-desc">Nebraska's federally designated protection and advocacy organization for people with disabilities. Provides free legal advocacy, information, and referrals for individuals whose rights have been violated.</p><a class="agency-link" href="https://www.disabilityrightsnebraska.org" target="_blank">disabilityrightsnebraska.org &#8599;</a></div>
+          <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div><p class="agency-name">Nebraska Early Development Network</p><p class="agency-type">Early Intervention (Birth to Age 3)</p></div></div><p class="agency-desc">Nebraska's early intervention program for infants and toddlers with developmental delays or disabilities. Provides services to children from birth through age 2 and their families at no cost.</p><a class="agency-link" href="https://www.education.ne.gov/sped/edn" target="_blank">education.ne.gov/sped/edn &#8599;</a></div>
+          <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><div><p class="agency-name">Easterseals Nebraska</p><p class="agency-type">Disability Services &amp; Support</p></div></div><p class="agency-desc">Provides a wide range of services for children and adults with disabilities across Nebraska, including therapy, early intervention, autism services, and family support programs.</p><a class="agency-link" href="https://www.easterseals.com/ne" target="_blank">easterseals.com/ne &#8599;</a></div>
+          <div class="agency-card"><div class="agency-header"><div class="agency-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div><p class="agency-name">Nebraska Vocational Rehabilitation</p><p class="agency-type">Transition &amp; Employment Services</p></div></div><p class="agency-desc">A state agency helping individuals with disabilities prepare for, obtain, and maintain employment. Particularly relevant for students transitioning from school to adult life and families planning for post-secondary goals.</p><a class="agency-link" href="https://www.vr.nebraska.gov" target="_blank">vr.nebraska.gov &#8599;</a></div>
+        </div>
+        <p class="disclaimer">Advocate Forward is not affiliated with any of the organizations listed above. These links are provided as a courtesy to help Nebraska families access additional support and information.</p>
       </div>
-      <p class="disclaimer">Advocate Forward is not affiliated with any of the organizations listed above. These links are provided as a courtesy to help Nebraska families access additional support and information.</p>
     </div>
   </div>
 
   <!-- CONTACT PAGE -->
   <div class="page" id="page-contact">
     <div class="section-white">
-      <p class="section-label">Contact</p>
-      <h2>Let's talk about how we can help you move <em>Forward</em></h2>
-      <p class="section-sub">Contact us if you would like additional information, or would like to schedule your free 20 minute consultation.</p>
-      <div class="contact-grid">
-        <div>
-          <div class="contact-detail" style="margin-bottom:24px">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-            <div>
-              <p style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Email</p>
-              <p style="font-size:14px;color:var(--text2)"><a href="mailto:info@advocateforward.com" style="color:var(--primary);text-decoration:none">info@advocateforward.com</a></p>
+      <div class="container">
+        <p class="section-label">Contact</p>
+        <h2>Let's talk about how we can help you move <em>Forward</em></h2>
+        <p class="section-sub">Contact us if you would like additional information, or would like to schedule your free 20 minute consultation.</p>
+        <div class="contact-grid">
+          <div>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+              <div>
+                <p style="font-size:13px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Email</p>
+                <p style="font-size:16px;color:var(--text2)"><a href="mailto:info@advocateforward.com" style="color:var(--primary);text-decoration:none;font-weight:600">info@advocateforward.com</a></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <p style="font-size:13px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Service area</p>
+                <p style="font-size:16px;color:var(--text2);line-height:1.65">Providing remote services across the entire state and available for in-person support in the Omaha metro area.</p>
+              </div>
+            </div>
+            <div style="padding:20px 24px;background:var(--gold-light);border-left:4px solid var(--gold-dec);border-radius:0 10px 10px 0;margin-top:16px">
+              <p style="font-size:15px;color:var(--gold-text);line-height:1.65;font-weight:500">We strive to respond to all inquiries within two business days.</p>
             </div>
           </div>
-          <div class="contact-detail" style="margin-bottom:28px">
-            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <p style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Service area</p>
-              <p style="font-size:14px;color:var(--text2);line-height:1.6">Providing remote services across the entire state and available for in-person support in the Omaha metro area.</p>
+          <form class="contact-form" id="contact-form">
+            <div class="form-row">
+              <div class="form-group"><label for="fname">First name</label><input id="fname" name="first_name" type="text" placeholder="Jane" required/></div>
+              <div class="form-group"><label for="lname">Last name</label><input id="lname" name="last_name" type="text" placeholder="Smith" required/></div>
             </div>
-          </div>
-          <div style="padding:16px 18px;background:var(--gold-light);border-left:3px solid var(--gold-dec);border-radius:0 8px 8px 0">
-            <p style="font-size:13px;color:var(--gold-text);line-height:1.6">We strive to respond to all inquiries within two business days.</p>
-          </div>
-        </div>
-        <form class="contact-form" id="contact-form">
-          <div class="form-row">
-            <div class="form-group"><label for="fname">First name</label><input id="fname" name="first_name" type="text" placeholder="Jane" required/></div>
-            <div class="form-group"><label for="lname">Last name</label><input id="lname" name="last_name" type="text" placeholder="Smith" required/></div>
-          </div>
-          <div class="form-group"><label for="email">Email address</label><input id="email" name="email" type="email" placeholder="jane@email.com" required/></div>
-          <div class="form-group"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="(402) 555-0000"/></div>
-          <div class="form-group"><label for="msg">Tell us a bit about your situation</label><textarea id="msg" name="message" placeholder="Briefly describe the issue or question."></textarea></div>
-          <button type="submit" class="form-submit" id="submit-btn">Send message</button>
-          <p style="font-size:11px;color:var(--text3);text-align:center;line-height:1.5">Your information is kept private and will never be shared.</p>
-        </form>
+            <div class="form-group"><label for="email">Email address</label><input id="email" name="email" type="email" placeholder="jane@email.com" required/></div>
+            <div class="form-group"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="(402) 555-0000"/></div>
+            <div class="form-group"><label for="msg">(Optional) Tell us a bit about your situation</label><textarea id="msg" name="message" placeholder="Briefly describe the issue or question."></textarea></div>
+            <button type="submit" class="form-submit" id="submit-btn">Send message</button>
+            <p style="font-size:13px;color:var(--text3);text-align:center;line-height:1.5">Please do not submit sensitive information through this form.</p>
+          </form>
 
-        <script>
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          var form = this;
-          var btn = document.getElementById('submit-btn');
-          btn.textContent = 'Sending...';
-          btn.disabled = true;
-          var data = new FormData(form);
-          fetch('https://formspree.io/f/mjgqdvgd', {
-            method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
-          }).then(function(res) {
-            if (res.ok) {
-              var thanks = document.createElement('div');
-              thanks.style.cssText = 'text-align:center;padding:40px 16px;display:flex;flex-direction:column;align-items:center;gap:16px;background:var(--bg2);border-radius:12px';
-              thanks.innerHTML = '<div style="width:56px;height:56px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4A5AA8\" stroke-width=\"2.5\" stroke-linecap=\"round\"><path d=\"M20 6L9 17l-5-5\"/></svg></div><p style=\"font-size:17px;font-weight:600;color:#1A1E2E\">Thank you for reaching out!</p><p style=\"font-size:14px;color:#4A5068;line-height:1.7;max-width:340px\">We received your message and will get back to you within two business days.</p>';
-              form.parentNode.replaceChild(thanks, form);
-            } else {
+          <script>
+          document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var form = this;
+            var btn = document.getElementById('submit-btn');
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            var data = new FormData(form);
+            fetch('https://formspree.io/f/mjgqdvgd', {
+              method: 'POST',
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            }).then(function(res) {
+              if (res.ok) {
+                var thanks = document.createElement('div');
+                thanks.style.cssText = 'text-align:center;padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-md)';
+                thanks.innerHTML = '<div style="width:64px;height:64px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4A5AA8\" stroke-width=\"2.5\" stroke-linecap=\"round\"><path d=\"M20 6L9 17l-5-5\"/></svg></div><p style=\"font-size:20px;font-weight:600;color:#151824\">Thank you for reaching out!</p><p style=\"font-size:15px;color:#444B63;line-height:1.7;max-width:380px\">Your information has been received. Please schedule your call here:<br /><a class="btn-gold" href="https://calendar.app.google/zPQw5i9hd9VBUJPt8" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:16px;font-weight:600;font-size:16px;padding:12px 28px;text-decoration:none">Schedule Call</a></p>';
+                form.parentNode.replaceChild(thanks, form);
+              } else {
+                btn.textContent = 'Send message';
+                btn.disabled = false;
+                alert('Something went wrong. Please try again or email us at info@advocateforward.com');
+              }
+            }).catch(function() {
               btn.textContent = 'Send message';
               btn.disabled = false;
               alert('Something went wrong. Please try again or email us at info@advocateforward.com');
-            }
-          }).catch(function() {
-            btn.textContent = 'Send message';
-            btn.disabled = false;
-            alert('Something went wrong. Please try again or email us at info@advocateforward.com');
+            });
           });
-        });
-        </script>
+          </script>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- PRIVACY POLICY PAGE -->
+  <div class="page" id="page-privacy">
+    <div class="section-white">
+      <div class="container">
+        <p class="section-label">Legal</p>
+        <h2>Privacy <em>Policy</em></h2>
+        <p class="policy-meta" style="font-size:14px;color:var(--text3);margin-bottom:32px">Last Updated: September 2026</p>
+
+        <div class="policy-card">
+          <p>Advocate Forward LLC ("Advocate Forward", "we", "us", or "our") respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, and safeguard your details when you visit our website or inquire about our consulting services.</p>
+
+          <h3>Information We Collect</h3>
+          <p>We only collect personal information that you voluntarily provide when contacting us or scheduling consultations:</p>
+          <ul>
+            <li>Name, email address, and phone number.</li>
+            <li>General information regarding your educational inquiry or advocacy questions.</li>
+            <li>Standard, anonymous website engagement data collected through Google Analytics.</li>
+          </ul>
+
+          <h3>How We Use Your Information</h3>
+          <p>Information you provide is used solely to provide and improve our services:</p>
+          <ul>
+            <li>Responding to your inquiries and scheduling consultations.</li>
+            <li>Providing advocacy, consulting, and educational support services.</li>
+            <li>Maintaining internal administrative and communication records.</li>
+          </ul>
+
+          <h3>Data Sharing &amp; Confidentiality</h3>
+          <p>We treat all client communications with strict confidentiality. We do not sell, rent, trade, or share your personal information with third parties for marketing purposes.</p>
+
+          <h3>Analytics &amp; Third-Party Services</h3>
+          <p>We use Google Analytics to monitor aggregate website traffic and help us improve site navigation. This tool collects standard internet log information in an anonymous form. You may disable cookies in your web browser settings at any time.</p>
+
+          <h3>Contact Us</h3>
+          <p>If you have any questions about this Privacy Policy or wish to have your contact details removed from our records, please contact us at <a href="mailto:info@advocateforward.com" style="color:var(--primary);font-weight:600">info@advocateforward.com</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-brand">
-      <svg width="220" height="105" viewBox="0 0 250 105" xmlns="http://www.w3.org/2000/svg">
-        <text x="6" y="52" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="46" fill="#4A5AA8">Advocate</text>
-        <polygon points="6,63 218,59 218,55 234,61 218,67 218,63" fill="#C8962A"/>
-        <text x="60" y="92" font-family="'DM Sans',sans-serif" font-weight="500" font-size="20" fill="#555870" letter-spacing="6">FORWARD</text>
-      </svg>
-      <p>Empowering Nebraska families to advocate for the education every child deserves.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <a onclick="showPage('services')">Parent advocacy</a>
-      <a onclick="showPage('services')">IEP support</a>
-      <a onclick="showPage('services')">Evaluation support</a>
-      <a onclick="showPage('services')">Case management</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a onclick="showPage('about')">About</a>
-      <a onclick="showPage('resources')">Free resources</a>
-      <a onclick="showPage('contact')">Contact</a>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="img/logo-transparent.png" alt="Advocate Forward Logo" onclick="showPage('home')" style="cursor:pointer" />
+        <p>Empowering Nebraska families to advocate for the education every child deserves.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a onclick="showPage('services')">Parent advocacy</a>
+        <a onclick="showPage('services')">IEP support</a>
+        <a onclick="showPage('services')">Evaluation support</a>
+        <a onclick="showPage('services')">Case management</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('resources')">Free resources</a>
+        <a onclick="showPage('contact')">Contact</a>
+        <a onclick="showPage('privacy')">Privacy policy</a>
+      </div>
     </div>
   </footer>
   <div class="footer-bottom">
-    <p>© 2026 Advocate Forward LLC. All rights reserved.</p>
-    <p>Nebraska Special Education Advocacy and Consulting</p>
+    <div class="container footer-bottom-wrap">
+      <p>© 2026 Advocate Forward LLC. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a onclick="showPage('privacy')">Privacy Policy</a>
+        <span>•</span>
+        <p>Nebraska Special Education Advocacy &amp; Consulting</p>
+      </div>
+    </div>
   </div>
 </div>
+
 <script>
 function showPage(id, updateHash = true){
   var page = document.getElementById('page-' + id);
@@ -673,7 +1665,7 @@ function showPage(id, updateHash = true){
   if (updateHash) {
     location.hash = id;
   }
-  window.scrollTo(0, 0);
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function handleRoute(){
