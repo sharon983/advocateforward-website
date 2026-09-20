@@ -330,7 +330,6 @@ h2 em{
   color:var(--text2);
   line-height:1.75;
   margin-bottom:44px;
-  /*max-width:760px;*/
 }
 
 /* PAIN GRID */
@@ -995,6 +994,118 @@ h2 em{
   background:var(--primary-dark);
 }
 
+/* 3D FLIP CONTAINER */
+.flip-scene {
+  perspective: 1200px;
+  width: 100%;
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.85s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.flip-face-front {
+  position: relative;
+}
+
+.flip-face-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 44px 32px;
+  background: #ffffff;
+  border: 2px solid #DCE3F8;
+  box-shadow: 0 16px 36px rgba(74,90,168,0.12);
+}
+
+/* CELEBRATION & CTA ANIMATIONS */
+.success-icon-pulse {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  animation: pulse-ring 2.2s infinite ease-out;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(74,90,168, 0.45); transform: scale(0.96); }
+  60% { box-shadow: 0 0 0 16px rgba(74,90,168, 0); transform: scale(1); }
+  100% { box-shadow: 0 0 0 0 rgba(74,90,168, 0); transform: scale(0.96); }
+}
+
+.schedule-btn-pulse {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 36px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--gold-dec);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(152,99,18,0.35);
+  transition: all 0.25s ease;
+  animation: glow-attention 2.5s infinite ease-in-out;
+}
+
+.schedule-btn-pulse:hover {
+  background: #7a4f0d;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(152,99,18,0.45);
+}
+
+.schedule-btn-pulse svg {
+  transition: transform 0.2s ease;
+}
+
+.schedule-btn-pulse:hover svg {
+  transform: translateX(4px);
+}
+
+@keyframes glow-attention {
+  0%, 100% { box-shadow: 0 4px 14px rgba(152,99,18,0.28); }
+  50% { box-shadow: 0 6px 26px rgba(152,99,18,0.6); }
+}
+
+.bounce-hint {
+  animation: bounce-y 1.8s infinite;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+@keyframes bounce-y {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(5px); }
+  60% { transform: translateY(3px); }
+}
+
 /* PRIVACY POLICY PAGE */
 .policy-card{
   background:#fff;
@@ -1530,17 +1641,53 @@ footer{
               <p style="font-size:15px;color:var(--gold-text);line-height:1.65;font-weight:500">We strive to respond to all inquiries within two business days.</p>
             </div>
           </div>
-          <form class="contact-form" id="contact-form">
-            <div class="form-row">
-              <div class="form-group"><label for="fname">First name</label><input id="fname" name="first_name" type="text" placeholder="Jane" required/></div>
-              <div class="form-group"><label for="lname">Last name</label><input id="lname" name="last_name" type="text" placeholder="Smith" required/></div>
+          
+          <div class="flip-scene">
+            <div class="flip-card" id="contact-card">
+              
+              <!-- FRONT FACE: CONTACT FORM -->
+              <div class="flip-face flip-face-front">
+                <form class="contact-form" id="contact-form">
+                  <div class="form-row">
+                    <div class="form-group"><label for="fname">First name</label><input id="fname" name="first_name" type="text" placeholder="Jane" required/></div>
+                    <div class="form-group"><label for="lname">Last name</label><input id="lname" name="last_name" type="text" placeholder="Smith" required/></div>
+                  </div>
+                  <div class="form-group"><label for="email">Email address</label><input id="email" name="email" type="email" placeholder="jane@email.com" required/></div>
+                  <div class="form-group"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="(402) 555-0000"/></div>
+                  <div class="form-group"><label for="msg">(Optional) Tell us a bit about your situation</label><textarea id="msg" name="message" placeholder="Briefly describe the issue or question."></textarea></div>
+                  <button type="submit" class="form-submit" id="submit-btn">Send message</button>
+                  <p style="font-size:13px;color:var(--text3);text-align:center;line-height:1.5">Please do not submit sensitive information through this form.</p>
+                </form>
+              </div>
+
+              <!-- BACK FACE: SUCCESS & SCHEDULE CALL ACTION -->
+              <div class="flip-face flip-face-back">
+                <div class="success-icon-pulse">
+                  <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#4A5AA8" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+
+                <span style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-text);margin-bottom:6px">Message Received</span>
+                <h3 style="font-size:26px;color:var(--text);font-weight:700;margin-bottom:8px">One last step!</h3>
+                
+                <p style="font-size:15.5px;color:var(--text2);line-height:1.6;max-width:370px;margin-bottom:20px">
+                  Your information is safely in our inbox. To reserve your spot right now, pick a time that suits you best on our calendar:
+                </p>
+
+                <div class="bounce-hint">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dec)" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                </div>
+
+                <a class="schedule-btn-pulse" href="https://calendar.app.google/zPQw5i9hd9VBUJPt8" target="_blank" rel="noopener noreferrer">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span>Schedule Your Call Now</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+
+                <p style="font-size:13px;color:var(--text3);margin-top:16px">Free 20-minute discovery call • No commitment</p>
+              </div>
+
             </div>
-            <div class="form-group"><label for="email">Email address</label><input id="email" name="email" type="email" placeholder="jane@email.com" required/></div>
-            <div class="form-group"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="(402) 555-0000"/></div>
-            <div class="form-group"><label for="msg">(Optional) Tell us a bit about your situation</label><textarea id="msg" name="message" placeholder="Briefly describe the issue or question."></textarea></div>
-            <button type="submit" class="form-submit" id="submit-btn">Send message</button>
-            <p style="font-size:13px;color:var(--text3);text-align:center;line-height:1.5">Please do not submit sensitive information through this form.</p>
-          </form>
+          </div>
 
           <script>
           document.getElementById('contact-form').addEventListener('submit', function(e) {
@@ -1548,8 +1695,11 @@ footer{
             e.stopPropagation();
             var form = this;
             var btn = document.getElementById('submit-btn');
+            var card = document.getElementById('contact-card');
+
             btn.textContent = 'Sending...';
             btn.disabled = true;
+
             var data = new FormData(form);
             fetch('https://formspree.io/f/mjgqdvgd', {
               method: 'POST',
@@ -1557,10 +1707,7 @@ footer{
               headers: { 'Accept': 'application/json' }
             }).then(function(res) {
               if (res.ok) {
-                var thanks = document.createElement('div');
-                thanks.style.cssText = 'text-align:center;padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-md)';
-                thanks.innerHTML = '<div style="width:64px;height:64px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4A5AA8\" stroke-width=\"2.5\" stroke-linecap=\"round\"><path d=\"M20 6L9 17l-5-5\"/></svg></div><p style=\"font-size:20px;font-weight:600;color:#151824\">Thank you for reaching out!</p><p style=\"font-size:15px;color:#444B63;line-height:1.7;max-width:380px\">Your information has been received. Please schedule your call here:<br /><a class="btn-gold" href="https://calendar.app.google/zPQw5i9hd9VBUJPt8" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:16px;font-weight:600;font-size:16px;padding:12px 28px;text-decoration:none">Schedule Call</a></p>';
-                form.parentNode.replaceChild(thanks, form);
+                card.classList.add('is-flipped');
               } else {
                 btn.textContent = 'Send message';
                 btn.disabled = false;
